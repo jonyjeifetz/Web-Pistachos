@@ -67,6 +67,25 @@
       <h1>¡Bienvenidos a nuestra web!</h1>
       <p>En esta página encontrarás información sobre los pistachos de La Rioja, su cultivo, propiedades y recetas.</p>
       <p>¡Esperamos que te guste!</p>
+      <!-- Enters para que el Footer quede al final de la Pantalla. Es provisorio hasta que tenga toda la info -->
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <!-- Aca terminan los enters Provisorios -->
     </div>
     <!-- Footer -->
     <div class="footer">
@@ -112,6 +131,7 @@
   margin: 8px; /* Margen predeterminado */
   padding: 0;  /* Relleno desactivado para evitar inconsistencias */
   text-align: center; /* Centra el contenido */
+  flex: 1; /* Ocupa el espacio restante entre el header y el footer */
  }
 
  .cuerpo h1 {
@@ -122,6 +142,7 @@
   .cuerpo p {
     font-family: roboto;
     color: #FFFFFF;
+    padding: 1rem 0;
   }
 
  .header{
@@ -133,7 +154,7 @@
   background-color: #FFFFFF; /* Color de fondo */
   text-align: center; /* Centra el contenido */
   padding: 0.3rem 0; /* Espacio interno arriba y abajo */
-  margin-top: 2rem; /* Espacio exterior superior */
+  /*margin-top: 2rem; /* Espacio exterior superior */
  }
 
  .footer img {
