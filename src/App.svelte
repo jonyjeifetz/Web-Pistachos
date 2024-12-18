@@ -163,21 +163,23 @@
 <!-- Codigo CSS -->
 
 <style>
+ /* Body */
  body{
-  background-color:#80A54D; /* Color Pistacho */
-  font-family: Arial, sans-serif; /* Fuente básica */
-  margin: 0; /* Elimina el margen por defecto del body */
-  padding: 0; /* Elimina el relleno por defecto del body */
-  overflow-x: hidden; /* Evita el scroll horizontal */
-  width: 100%; /* Ajusta el ancho al 100% */
- }
+    background-color:#80A54D; /* Color Pistacho */
+    font-family: Arial, sans-serif; /* Fuente básica */
+    margin: 0; /* Elimina el margen por defecto del body */
+    padding: 0; /* Elimina el relleno por defecto del body */
+    overflow-x: hidden; /* Evita el scroll horizontal */
+    width: 100%; /* Ajusta el ancho al 100% */
+  }
 
+ /* Cuerpo */
  .cuerpo{
-  margin: 8px; /* Margen predeterminado */
-  padding: 0;  /* Relleno desactivado para evitar inconsistencias */
-  text-align: center; /* Centra el contenido */
-  flex: 1; /* Ocupa el espacio restante entre el header y el footer */
- }
+    margin: 8px; /* Margen predeterminado */
+    padding: 0;  /* Relleno desactivado para evitar inconsistencias */
+    text-align: center; /* Centra el contenido */
+    flex: 1; /* Ocupa el espacio restante entre el header y el footer */
+  }
 
  .cuerpo h1 {
     font-family: montserrat;
@@ -190,173 +192,173 @@
     padding: 1rem 0;
   }
 
+  /* Header */
  .header{
-  background-color: #FFFFFF; /* Color de fondo */
-  text-align: center; /* Centra el contenido */
- }
+    background-color: #FFFFFF; /* Color de fondo */
+    text-align: center; /* Centra el contenido */
+  }
 
  .header img {
-  max-width: 100%; /* Hace que la imagen no se salga del contenedor */
-  height: auto; /* Mantiene la relación de aspecto */
- }
+    max-width: 100%; /* Hace que la imagen no se salga del contenedor */
+    height: auto; /* Mantiene la relación de aspecto */
+  }
 
+  /* Recetas */
  .recetas-container {
-  overflow-x: auto;
-  display: flex;
-  justify-content: flex-start;
-  width: 100%;
-  padding: 20px;
-  margin-bottom: 20px;
-  scrollbar-width: none; /* Para Firefox */
-}
+    overflow-x: auto;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+    scrollbar-width: none; /* Para Firefox */
+  } 
 
-.recetas-container::-webkit-scrollbar {
-  display: none; /* Oculta la barra de desplazamiento en Chrome, Safari, y Edge */
-}
+  .recetas-container::-webkit-scrollbar {
+    display: none; /* Oculta la barra de desplazamiento en Chrome, Safari, y Edge */
+  }
 
-.recetas {
-  display: flex;
-  gap: 20px;
-  width: 100%;
-  flex-wrap: nowrap;
-}
+  .recetas {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    flex-wrap: nowrap;
+  }
 
-.receta {
-  position: relative;
-  width: 300px; /* Tamaño de cada receta */
-  height: 400px; /* Ajusta según el tamaño que quieras */
-  text-align: center;
-  flex-shrink: 0; /* Impide que las recetas se reduzcan */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+  .receta {
+    position: relative;
+    width: 300px; /* Tamaño de cada receta */
+    height: 400px; /* Ajusta según el tamaño que quieras */
+    text-align: center;
+    flex-shrink: 0; /* Impide que las recetas se reduzcan */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
-.receta img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-  border-radius: 10px; /* Bordes redondeados */
-}
+  .receta img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    border-radius: 10px; /* Bordes redondeados */
+  }
 
-.receta:hover img {
-  transform: scale(1.1); /* Zoom al hacer hover sobre la imagen */
-}
+  .receta:hover img {
+    transform: scale(1.1); /* Zoom al hacer hover sobre la imagen */
+  }
 
-.hover-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: black;
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-  padding: 10px;
-  border-radius: 10px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
+  .hover-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
 
-.receta:hover .hover-text {
-  opacity: 1; /* Muestra el texto al hacer hover sobre la receta */
-}
+  .receta:hover .hover-text {
+    opacity: 1; /* Muestra el texto al hacer hover sobre la receta */
+  }
 
-.btn-ver-receta {
-  background-color: black;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 20px;
-  text-decoration: none;
-  font-weight: bold;
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  margin: 0 auto; /* Centra el botón horizontalmente */
-  width: fit-content; /* Asegura que el ancho del botón sea el adecuado */
-  position: relative; /* Para asegurar que el botón esté posicionado correctamente */
-  z-index: 1; /* Asegura que el botón esté por encima de otros elementos */
-}
+  .btn-ver-receta {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    margin: 0 auto; /* Centra el botón horizontalmente */
+    width: fit-content; /* Asegura que el ancho del botón sea el adecuado */
+    position: relative; /* Para asegurar que el botón esté posicionado correctamente */
+    z-index: 1; /* Asegura que el botón esté por encima de otros elementos */
+  }
 
-.receta:hover .btn-ver-receta {
-  opacity: 1;
-  transform: translateY(-10px); /* Pequeño movimiento hacia arriba al hacer hover */
-}
+  .receta:hover .btn-ver-receta {
+    opacity: 1;
+    transform: translateY(-10px); /* Pequeño movimiento hacia arriba al hacer hover */
+  }
 
-.receta:hover .btn-ver-receta {
-  transform: scale(1.1); /* Zoom al hacer hover sobre el botón */
-}
+  .receta:hover .btn-ver-receta {
+    transform: scale(1.1); /* Zoom al hacer hover sobre el botón */
+  }
 
-
-
+  /* Pagina de Venta */
   .PaginaVenta {
-  text-align: center; /* Centra el texto */
-  font-size: 2rem; /* Ajusta el tamaño del título */
-  margin-bottom: 20px; /* Espacio debajo del título */
-}
+    text-align: center; /* Centra el texto */
+    font-size: 2rem; /* Ajusta el tamaño del título */
+    margin-bottom: 20px; /* Espacio debajo del título */
+  }
 
-.button-container {
-  text-align: center; /* Centra el botón */
-}
+  .button-container {
+    text-align: center; /* Centra el botón */
+  }
 
-.order-button {
-  background-color: black; /* Fondo negro */
-  color: white; /* Texto blanco */
-  font-size: 1.2rem; /* Tamaño del texto */
-  padding: 10px 20px; /* Espaciado dentro del botón */
-  border: none; /* Sin bordes */
-  border-radius: 5px; /* Bordes redondeados */
-  cursor: pointer; /* Cambia el cursor al pasar por encima */
-  transition: transform 0.3s ease, background-color 0.3s ease; /* Animación suave */
-}
+  .order-button {
+    background-color: black; /* Fondo negro */
+    color: white; /* Texto blanco */
+    font-size: 1.2rem; /* Tamaño del texto */
+    padding: 10px 20px; /* Espaciado dentro del botón */
+    border: none; /* Sin bordes */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Animación suave */
+  }
 
-.order-button:hover {
-  transform: scale(1.1); /* Zoom al pasar el mouse */
-  background-color: #333; /* Fondo gris oscuro al hacer hover */
-}
+  .order-button:hover {
+    transform: scale(1.1); /* Zoom al pasar el mouse */
+    background-color: #333; /* Fondo gris oscuro al hacer hover */
+  }
 
+  /* Footer */
+  .footer {
+    background-color: #FFFFFF; /* Color de fondo */
+    display: flex; /* Alinea los elementos en columna */
+    flex-direction: column; /* Coloca los elementos en columna (título y luego imágenes) */
+    align-items: center; /* Centra los elementos horizontalmente */
+    padding: 20px 0; /* Añade espacio arriba y abajo */
+  }
 
-.footer {
-  background-color: #FFFFFF; /* Color de fondo */
-  display: flex; /* Alinea los elementos en columna */
-  flex-direction: column; /* Coloca los elementos en columna (título y luego imágenes) */
-  align-items: center; /* Centra los elementos horizontalmente */
-  padding: 20px 0; /* Añade espacio arriba y abajo */
-}
+  .footer h4 {
+    font-family: montserrat; /* Fuente del título */
+    text-align: center; /* Centra el texto */
+    margin-top: 0; /* Elimina el margen superior innecesario */
+    margin-bottom: 20px; /* Espacio entre el título y las imágenes */
+  }
 
-.footer h4 {
-  font-family: montserrat; /* Fuente del título */
-  text-align: center; /* Centra el texto */
-  margin-top: 0; /* Elimina el margen superior innecesario */
-  margin-bottom: 20px; /* Espacio entre el título y las imágenes */
-}
+  .footer .social-icons {
+    display: flex; /* Alinea las imágenes en una fila */
+    justify-content: center; /* Centra las imágenes */
+    gap: 150px; /* Espacio entre las imágenes */
+  }
 
-.footer .social-icons {
-  display: flex; /* Alinea las imágenes en una fila */
-  justify-content: center; /* Centra las imágenes */
-  gap: 150px; /* Espacio entre las imágenes */
-}
+  .footer img {
+    max-width: 50px; /* Ajusta el tamaño de las imágenes */
+    height: auto; /* Mantiene la relación de aspecto */
+    transition: transform 0.3s ease-in-out; /* Agrega una transición suave */
+  }
 
-.footer img {
-  max-width: 50px; /* Ajusta el tamaño de las imágenes */
-  height: auto; /* Mantiene la relación de aspecto */
-  transition: transform 0.3s ease-in-out; /* Agrega una transición suave */
-}
+  .footer img:hover {
+    transform: scale(1.2); /* Aplica el zoom al pasar el ratón */
+  }
 
-.footer img:hover {
-  transform: scale(1.2); /* Aplica el zoom al pasar el ratón */
-}
+  /* Borrado de marca de agua flourish */
+  .flourish-embed {
+    width: 100%;
+    max-width: 100%; /* Impide que el mapa se salga de la pantalla */
+    overflow-x: hidden; /* Evita el desplazamiento horizontal del mapa */
+  }
 
-
-
- .flourish-embed {
-  width: 100%;
-  max-width: 100%; /* Impide que el mapa se salga de la pantalla */
-  overflow-x: hidden; /* Evita el desplazamiento horizontal del mapa */
-}
-
-* {
-  box-sizing: border-box; /* Asegura que los márgenes y rellenos no causen desbordes */
-}
+  * {
+    box-sizing: border-box; /* Asegura que los márgenes y rellenos no causen desbordes */
+  }
 
 </style>
