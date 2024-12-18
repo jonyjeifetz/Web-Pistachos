@@ -1,71 +1,65 @@
 <!-- Codigo J-S -->
 
 <script>
-  window.onload = function() {
-    // Número de teléfono para WhatsApp
-    var phoneNumber = "+5491127161950"; 
-    
-    // Mensaje preescrito que se enviará
-    var prewrittenMessage = "¡Hola! Estoy interesado en saber más sobre los pistachos de La Rioja.";
-    
-    // Codifica el mensaje para asegurarse de que los caracteres especiales se manejen correctamente en una URL
-    var encodedMessage = encodeURIComponent(prewrittenMessage);
-    
-    // Dirección de correo electrónico de contacto
-    var emailAddress = "info@pistachosriojanos.com"; 
-    
-    // Enlaces a las redes sociales y correo electrónico en el HTML
-    var instagramLink = document.getElementById("instagram-link");
-    var whatsappLink = document.getElementById("whatsapp-link");
-    var gmailLink = document.getElementById("gmail-link");
-    
-    // Verifica si el usuario está usando un dispositivo móvil
-    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  // Código JS
+window.onload = function() {
+  // Número de teléfono para WhatsApp
+  var phoneNumber = "+5491127161950"; 
+  // Mensaje preescrito que se enviará
+  var prewrittenMessage = "¡Hola! Estoy interesado en saber más sobre los pistachos de La Rioja.";
+  // Codifica el mensaje para asegurarse de que los caracteres especiales se manejen correctamente en una URL
+  var encodedMessage = encodeURIComponent(prewrittenMessage);
+  // Dirección de correo electrónico de contacto
+  var emailAddress = "info@pistachosriojanos.com"; 
+  // Enlaces a las redes sociales y correo electrónico en el HTML
+  var instagramLink = document.getElementById("instagram-link");
+  var whatsappLink = document.getElementById("whatsapp-link");
+  var gmailLink = document.getElementById("gmail-link");
+  
+  // Verifica si el usuario está usando un dispositivo móvil
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-    // Configura el enlace de WhatsApp según si el dispositivo es móvil o no
-    if (isMobile && !/iPad/i.test(navigator.userAgent)) {
-      whatsappLink.href = "https://wa.me/" + phoneNumber + "?text=" + encodedMessage;  // WhatsApp en dispositivos móviles
-    } else {
-      whatsappLink.href = "https://web.whatsapp.com/send?phone=" + phoneNumber + "&text=" + encodedMessage;  // WhatsApp en desktop
-    }
+  // Configura el enlace de WhatsApp según si el dispositivo es móvil o no
+  if (isMobile && !/iPad/i.test(navigator.userAgent)) {
+    whatsappLink.href = "https://wa.me/" + phoneNumber + "?text=" + encodedMessage;  // WhatsApp en dispositivos móviles
+  } else {
+    whatsappLink.href = "https://web.whatsapp.com/send?phone=" + phoneNumber + "&text=" + encodedMessage;  // WhatsApp en desktop
+  }
 
-    // Configura el enlace de Instagram según si el dispositivo es móvil o no
-    if (isMobile && !/iPad/i.test(navigator.userAgent)) {
-      instagramLink.href = "instagram://user?username=pistachosriojanos";  // App de Instagram en móviles
-    } else {
-      instagramLink.href = "https://www.instagram.com/pistachosriojanos";  // Instagram en desktop
-    }
+  // Configura el enlace de Instagram según si el dispositivo es móvil o no
+  if (isMobile && !/iPad/i.test(navigator.userAgent)) {
+    instagramLink.href = "instagram://user?username=pistachosriojanos";  // App de Instagram en móviles
+  } else {
+    instagramLink.href = "https://www.instagram.com/pistachosriojanos";  // Instagram en desktop
+  }
 
-    // Configura el enlace de Gmail según si el dispositivo es móvil o no
-    if (isMobile) {
-      gmailLink.href = "mailto:" + emailAddress + "?subject=Mas Informacion&body=" + encodedMessage;  // Gmail en dispositivos móviles
-    } else {
-      gmailLink.href = "https://mail.google.com/mail/?view=cm&fs=1&to=" + emailAddress + "&su=Mas%20Informacion&body=" + encodedMessage;  // Gmail en desktop
-    }
+  // Configura el enlace de Gmail según si el dispositivo es móvil o no
+  if (isMobile) {
+    gmailLink.href = "mailto:" + emailAddress + "?subject=Mas Informacion&body=" + encodedMessage;  // Gmail en dispositivos móviles
+  } else {
+    gmailLink.href = "https://mail.google.com/mail/?view=cm&fs=1&to=" + emailAddress + "&su=Mas%20Informacion&body=" + encodedMessage;  // Gmail en desktop
+  }
 
-    // Función para detectar si un elemento está en el centro de la pantalla
-    function checkHover() {
-      const recetas = document.querySelectorAll('.receta');  // Selecciona todos los elementos con la clase 'receta'
-      recetas.forEach(function(receta) {
-        var rect = receta.getBoundingClientRect();  // Obtiene las coordenadas del elemento en la pantalla
-        var isInViewport = rect.top >= 0 && rect.bottom <= window.innerHeight;  // Verifica si el elemento está dentro del área visible de la pantalla
-        var centerOfViewport = window.innerHeight / 2;  // Calcula el centro de la pantalla
+  // Función para detectar si un elemento está en el centro de la pantalla
+  function checkHover() {
+    const recetas = document.querySelectorAll('.receta');  // Selecciona todos los elementos con la clase 'receta'
+    recetas.forEach(function(receta) {
+      var rect = receta.getBoundingClientRect();  // Obtiene las coordenadas del elemento en la pantalla
+      var isInViewport = rect.top >= 0 && rect.bottom <= window.innerHeight;  // Verifica si el elemento está dentro del área visible de la pantalla
+      var centerOfViewport = window.innerHeight / 2;  // Calcula el centro de la pantalla
 
-        // Si la receta está cerca del centro de la pantalla, activa el hover
-        if (rect.top <= centerOfViewport && rect.bottom >= centerOfViewport) {
-          receta.classList.add('hover'); // Agrega la clase 'hover' para activar el efecto
-        } else {
-          receta.classList.remove('hover'); // Elimina la clase 'hover' si no está en el centro
-        }
-      });
-    }
+      // Si la receta está cerca del centro de la pantalla, activa el hover
+      if (rect.top <= centerOfViewport && rect.bottom >= centerOfViewport) {
+        receta.classList.add('hover'); // Agrega la clase 'hover' para activar el efecto
+      } else {
+        receta.classList.remove('hover'); // Elimina la clase 'hover' si no está en el centro
+      }
+    });
+  }
 
-    // Llama a checkHover cuando el usuario se desplace por la página
-    window.addEventListener('scroll', checkHover);
-    
-    // También llama a la función al cargar la página para verificar los elementos desde el principio
-    checkHover();
-  };
+  // Llama a checkHover cuando el usuario se desplace por la página
+  window.addEventListener('scroll', checkHover);
+};
 </script>
 
 <!-- Codigo HTML -->
@@ -313,6 +307,20 @@
 
   .receta:hover .btn-ver-receta {
     transform: scale(1.1); /* Zoom al hacer hover sobre el botón */
+  }
+
+  /* Simula el hover en dispositivos móviles utilizando :active */
+  .receta:active img {
+    transform: scale(1.1); /* Zoom al hacer "presionar" sobre la imagen */
+  }
+
+  .receta:active .hover-text {
+    opacity: 1; /* Muestra el texto al tocar sobre la receta */
+  }
+
+  .receta:active .btn-ver-receta {
+    opacity: 1; /* Muestra el botón */
+    transform: translateY(-10px); /* Mueve el botón hacia arriba */
   }
 
   /* Pagina de Venta */
