@@ -28,61 +28,45 @@
     if (isMobile) {
       document.addEventListener("DOMContentLoaded", () => {
         const recetas = document.querySelectorAll(".receta");
-        let currentIndex = 0;
 
-        const applyHover = (index) => {
-          recetas.forEach((receta, i) => {
-            receta.classList.toggle("active", i === index);
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+            } else {
+              entry.target.classList.remove("active");
+            }
           });
-        };
+        }, {
+          threshold: 1 // Adjust this value as needed
+        });
 
-        // Hover automático
-        setInterval(() => {
-          applyHover(currentIndex);
-          currentIndex = (currentIndex + 1) % recetas.length;
-        }, 3000);
-
-        // Hover manual con touchstart para móviles
-        // recetas.forEach((receta, index) => {
-        //   receta.addEventListener("touchstart", () => {
-        //     currentIndex = index; // Actualiza el índice al tocar
-        //     applyHover(currentIndex);
-        //   });
-        // });
-
-        // Desactiva el efecto de hover automático temporalmente al tocar
-        // let autoHoverEnabled = true;
-        // const disableAutoHover = () => {
-        //   autoHoverEnabled = false;
-        //   setTimeout(() => (autoHoverEnabled = true), 5000); // Rehabilita después de 5 segundos
-        // };
-
-        recetas.forEach((receta) => {
-          receta.addEventListener("touchstart", disableAutoHover);
+        recetas.forEach(receta => {
+          observer.observe(receta);
         });
       });
-      } else {
-        document.addEventListener("DOMContentLoaded", () => {
-          const recetas = document.querySelectorAll(".receta");
+    } else {
+      document.addEventListener("DOMContentLoaded", () => {
+        const recetas = document.querySelectorAll(".receta");
 
-          const enableHoverOnScroll = () => {
-            recetas.forEach(function(receta) {
-              const rect = receta.getBoundingClientRect();
-              const centerOfViewport = window.innerHeight / 2;
+        const enableHoverOnScroll = () => {
+          recetas.forEach(function(receta) {
+            const rect = receta.getBoundingClientRect();
+            const centerOfViewport = window.innerHeight / 2;
 
-              if (rect.top <= centerOfViewport && rect.bottom >= centerOfViewport) {
-                receta.classList.add('hover');
-              } else {
-                receta.classList.remove('hover');
-              }
-            });
+            if (rect.top <= centerOfViewport && rect.bottom >= centerOfViewport) {
+              receta.classList.add('hover');
+            } else {
+              receta.classList.remove('hover');
+            }
+          });
         };
 
         // Ejecuta al cargar y cada vez que se hace scroll
         enableHoverOnScroll();
         window.addEventListener("scroll", enableHoverOnScroll);
       });
-      }
+    }
   };
 </script>
 
