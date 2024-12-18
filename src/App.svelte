@@ -129,29 +129,25 @@
     <!-- Footer -->
     <div class="footer">
       <!-- Titulo del Footer -->
-       <h4 style="font-family: montserrat; text-allign: center; margin-top: -0.4%;">¿Preguntas? ¡Estamos a un clic de distancia!</h4>
-      <!-- Instagram -->
-      <a id="instagram-link" href="#" target="_blank">
-        <img
-          src="./images/Instagram.png"
-          alt="Instagram"
-        />
-      </a>
-      <!-- WhatsApp -->
-      <a id="whatsapp-link" href="#" target="_blank">
-        <img
-          src="./images/What's App.png"
-          alt="What's App"
-        />
-      </a>
-      <!-- Gmail -->
-      <a id="gmail-link" href="#" target="_blank">
-        <img
-          src="./images/Gmail.png"
-          alt="Gmail"
-        />
-      </a>
-    </div> 
+      <h4>¿Preguntas? ¡Estamos a un clic de distancia!</h4>
+    
+      <!-- Contenedor de las imágenes (Instagram, WhatsApp, Gmail) -->
+      <div class="social-icons">
+        <!-- Instagram -->
+        <a id="instagram-link" href="#" target="_blank">
+          <img src="./images/Instagram.png" alt="Instagram" />
+        </a>
+        <!-- WhatsApp -->
+        <a id="whatsapp-link" href="#" target="_blank">
+          <img src="./images/What's App.png" alt="What's App" />
+        </a>
+        <!-- Gmail -->
+        <a id="gmail-link" href="#" target="_blank">
+          <img src="./images/Gmail.png" alt="Gmail" />
+        </a>
+      </div>
+    </div>
+    
   </main>
 </body>
 
@@ -278,11 +274,32 @@
     transform: translateY(-10px); /* Pequeño movimiento hacia arriba al hacer hover */
   }
 
- .footer img {
-  max-width: 100%; /* Hace que las imágenes no se salgan del contenedor */
+  .footer {
+  background-color: #FFFFFF; /* Color de fondo */
+  display: flex; /* Alinea los elementos en columna */
+  flex-direction: column; /* Coloca los elementos en columna (título y luego imágenes) */
+  align-items: center; /* Centra los elementos horizontalmente */
+  padding: 20px 0; /* Añade espacio arriba y abajo */
+}
+
+.footer h4 {
+  font-family: montserrat; /* Fuente del título */
+  text-align: center; /* Centra el texto */
+  margin-top: 0; /* Elimina el margen superior innecesario */
+  margin-bottom: 20px; /* Espacio entre el título y las imágenes */
+}
+
+.footer .social-icons {
+  display: flex; /* Alinea las imágenes en una fila */
+  justify-content: center; /* Centra las imágenes */
+  gap: 20px; /* Espacio entre las imágenes */
+}
+
+.footer img {
+  max-width: 50px; /* Ajusta el tamaño de las imágenes */
   height: auto; /* Mantiene la relación de aspecto */
-  margin: 0 2.5rem; /* Añade margen horizontal entre las imágenes */
- }
+}
+
 
  .flourish-embed {
   width: 100%;
