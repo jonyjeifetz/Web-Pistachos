@@ -64,7 +64,8 @@
     </div> 
     <!-- Cuerpo -->
     <div class="cuerpo">
-      <h1>¡Bienvenidos a nuestra web!</h1>
+      <h1>De La Rioja al mundo: nuestro alcance</h1>
+      <div class="flourish-embed flourish-map" data-src="visualisation/20858873"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20858873/thumbnail" width="100%" alt="map visualization" /></noscript></div>
       <p>En esta página encontrarás información sobre los pistachos de La Rioja, su cultivo, propiedades y recetas.</p>
       <p>¡Esperamos que te guste!</p>
       <!-- Enters para que el Footer quede al final de la Pantalla. Es provisorio hasta que tenga toda la info -->
@@ -123,8 +124,11 @@
 <style>
  body{
   background-color:#80A54D; /* Color Pistacho */
-  height: 100vh; /* Garantiza que cubra toda la altura de la pantalla */
   font-family: Arial, sans-serif; /* Fuente básica */
+  margin: 0; /* Elimina el margen por defecto del body */
+  padding: 0; /* Elimina el relleno por defecto del body */
+  overflow-x: hidden; /* Evita el scroll horizontal */
+  width: 100%; /* Ajusta el ancho al 100% */
  }
 
  .cuerpo{
@@ -150,15 +154,33 @@
   text-align: center; /* Centra el contenido */
  }
 
+ .header img {
+  max-width: 100%; /* Hace que la imagen no se salga del contenedor */
+  height: auto; /* Mantiene la relación de aspecto */
+ }
+
  .footer{
   background-color: #FFFFFF; /* Color de fondo */
   text-align: center; /* Centra el contenido */
   padding: 0.3rem 0; /* Espacio interno arriba y abajo */
+  width: 100%; /* Ajusta el ancho al 100% */
   /*margin-top: 2rem; /* Espacio exterior superior */
  }
 
  .footer img {
+  max-width: 100%; /* Hace que las imágenes no se salgan del contenedor */
+  height: auto; /* Mantiene la relación de aspecto */
   margin: 0 2.5rem; /* Añade margen horizontal entre las imágenes */
  }
+
+ .flourish-embed {
+  width: 100%;
+  max-width: 100%; /* Impide que el mapa se salga de la pantalla */
+  overflow-x: hidden; /* Evita el desplazamiento horizontal del mapa */
+}
+
+* {
+  box-sizing: border-box; /* Asegura que los márgenes y rellenos no causen desbordes */
+}
 
 </style>
