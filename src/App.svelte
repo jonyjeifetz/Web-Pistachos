@@ -25,11 +25,11 @@
     }
     
     // Función para activar el hover automáticamente en dispositivos táctiles
-    if(isMobile) {
+    if (isMobile) {
       document.addEventListener("DOMContentLoaded", () => {
         const recetas = document.querySelectorAll(".receta");
         let currentIndex = 0;
-        
+
         const applyHover = (index) => {
           recetas.forEach((receta, i) => {
             receta.classList.toggle("active", i === index);
@@ -61,28 +61,28 @@
           receta.addEventListener("touchstart", disableAutoHover);
         });
       });
-    } else {
-      // Función para gestionar hover con scroll para dispositivos con mouse
-      function enableHoverOnScroll() {
-        const recetas = document.querySelectorAll('.receta');
-        recetas.forEach(function(receta) {
-          var rect = receta.getBoundingClientRect();
-          var centerOfViewport = window.innerHeight / 2;
+      } else {
+        document.addEventListener("DOMContentLoaded", () => {
+          const recetas = document.querySelectorAll(".receta");
 
-          if (rect.top <= centerOfViewport && rect.bottom >= centerOfViewport) {
-            receta.classList.add('hover');
-          } else {
-            receta.classList.remove('hover');
-          }
-        });
+          const enableHoverOnScroll = () => {
+            recetas.forEach(function(receta) {
+              const rect = receta.getBoundingClientRect();
+              const centerOfViewport = window.innerHeight / 2;
+
+              if (rect.top <= centerOfViewport && rect.bottom >= centerOfViewport) {
+                receta.classList.add('hover');
+              } else {
+                receta.classList.remove('hover');
+              }
+            });
+        };
+
+        // Ejecuta al cargar y cada vez que se hace scroll
+        enableHoverOnScroll();
+        window.addEventListener("scroll", enableHoverOnScroll);
+      });
       }
-    }
-    // Detectar el tipo de dispositivo y activar la función adecuada
-    if (isMobile) {
-      enableHoverOnTouchDevices();
-    } else {
-      window.addEventListener('scroll', enableHoverOnScroll);
-    }
   };
 </script>
 
