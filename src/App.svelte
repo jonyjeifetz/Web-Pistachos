@@ -71,26 +71,23 @@
 
 
 
+
 <!-- Codigo HTML -->
 
 <body>
   <main>
-    <!-- Header -->
     <div class="header">
       <img
         src="./images/Logo-Pistachos.png"
         alt="Logo-Pistachos-Riojanos"
       />
     </div> 
-    <!-- Cuerpo -->
-    <div class="cuerpo">
 
-      <!-- Mapa de lugares a donde llegamos -->
+    <div class="cuerpo">
       <h1>De La Rioja al mundo: nuestro alcance</h1>
       <div class="flourish-embed flourish-map" data-src="visualisation/20858873"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20858873/thumbnail" width="100%" alt="map visualization" /></noscript></div>
       <br>
 
-      <!-- Recetas -->
       <h1>De La Rioja a Tu Mesa: Recetas Creativas con Pistacho</h1>
       <div class="recetas-container">
         <div class="recetas">
@@ -114,20 +111,19 @@
           </div>
           <!-- Receta 4 -->
           <div class="receta">
-            <img src="./images/Crema de Pistacho.jpeg" alt="Brownie de Pistacho" />
+            <img src="./images/Crema de Pistacho.jpeg" alt="Crema de Pistacho" />
             <div class="hover-text">Crema de Pistacho</div>
             <a href="https://drive.google.com/file/d/1EaWcLLZRK1M0UEYfJ9T_Xm8azDYD8pAA/view?usp=sharing" target="_blank" class="btn-ver-receta" >Ver receta</a>
           </div>
           <!-- Receta 5 -->
           <div class="receta">
-            <img src="./images/Trufas.jpeg" alt="Baklava" />
+            <img src="./images/Trufas.jpeg" alt="Trufas de Pistacho" />
             <div class="hover-text">Trufas de Pistacho, Palta y Chocolate</div>
             <a href="https://drive.google.com/file/d/166AyeBcA_4nVvagtlAALTjaTE_pYXHzF/view?usp=sharing" target="_blank" class="btn-ver-receta">Ver receta</a>
           </div> 
         </div>
       </div>
 
-      <!-- Link a la pagina para vender -->
       <h1 class="PaginaVenta">¡Atrévete a probar el snack que te conquistará! Pistachos frescos y deliciosos te esperan</h1>
       <div class="button-container">
         <a href="https://www.pistachosriojanos.com/" target="_blank">
@@ -136,54 +132,31 @@
       </div>
       
       <p>¡Esperamos que te guste!</p>
-      <!-- Enters para que el Footer quede al final de la Pantalla. Es provisorio hasta que tenga toda la info -->
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <!-- Aca terminan los enters Provisorios -->
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
-    <!-- Footer -->
+
     <div class="footer">
-      <!-- Titulo del Footer -->
       <h4>¿Preguntas? ¡Estamos a un clic de distancia!</h4>
     
-      <!-- Contenedor de las imágenes (Instagram, WhatsApp, Gmail) -->
       <div class="social-icons">
-        <!-- Instagram -->
         <a id="instagram-link" href="#" target="_blank">
           <img src="./images/Instagram.png" alt="Instagram" />
         </a>
-        <!-- WhatsApp -->
         <a id="whatsapp-link" href="#" target="_blank">
           <img src="./images/What's App.png" alt="What's App" />
         </a>
-        <!-- Gmail -->
         <a id="gmail-link" href="#" target="_blank">
           <img src="./images/Gmail.png" alt="Gmail" />
         </a>
       </div>
     
-      <!-- Texto de copyright -->
       <div class="footer-copy">
         <p>© 2024 por Jonathan Jeifetz</p>
       </div>
     </div> 
   </main>
 </body>
+
 
 
 
