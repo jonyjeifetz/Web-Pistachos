@@ -51,11 +51,17 @@
     // Alternar manualmente fullscreen en click
     recetas.forEach((receta) => {
       receta.addEventListener("click", () => {
+        const isFullscreen = receta.classList.contains("fullscreen");
+        // Alternar entre fullscreen y posición original
         receta.classList.toggle("fullscreen");
+
+        // Deshabilitar scroll en el fondo cuando una receta esté en fullscreen
+        document.body.style.overflow = isFullscreen ? "auto" : "hidden";
       });
     });
   };
 </script>
+
 
 <!-- Codigo HTML -->
 
@@ -217,8 +223,8 @@
   }
 
  /* Recetas */
- .recetas-container {
-  overflow-x: auto;
+.recetas-container {
+  overflow: visible; /* Cambiado temporalmente para pruebas */
   display: flex;
   justify-content: flex-start;
   width: 100%;
@@ -335,6 +341,15 @@
   align-items: center;
   padding: 20px;
 }
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+  .receta {
+    width: 90%; /* Ajusta el ancho al viewport */
+    height: auto; /* Altura dinámica */
+  }
+}
+
 
 
 
