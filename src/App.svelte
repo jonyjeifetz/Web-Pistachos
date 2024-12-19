@@ -86,7 +86,7 @@
     <div class="cuerpo">
 
       <!-- Mapa de lugares a donde llegamos -->
-      <h1>Des La Rioja al mundo: nuestro alcance</h1>
+      <h1>De La Rioja al mundo: nuestro alcance</h1>
       <div class="flourish-embed flourish-map" data-src="visualisation/20858873"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20858873/thumbnail" width="100%" alt="map visualization" /></noscript></div>
       <br>
 
