@@ -33,17 +33,17 @@
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio === 1) {
-            // Agrega la clase .show-hover si el elemento está completamente visible
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.7) {
+            // Agrega la clase .show-hover si el 70% del elemento es visible
             entry.target.classList.add("show-hover");
           } else {
-            // Elimina la clase .show-hover si deja de estar completamente visible
+            // Elimina la clase .show-hover si menos del 70% es visible
             entry.target.classList.remove("show-hover");
           }
         });
       },
       {
-        threshold: [1.0] // Detecta solo cuando el 100% del elemento es visible
+        threshold: [0.7] // Detecta cuando al menos el 70% del elemento es visible
       }
     );
 
@@ -65,6 +65,7 @@
 </script>
 
 
+
 <!-- Codigo HTML -->
 
 <body>
@@ -80,7 +81,7 @@
     <div class="cuerpo">
 
       <!-- Mapa de lugares a donde llegamos -->
-      <h1>Des La Rioja al mundo: nuestro alcance</h1>
+      <h1>De La Rioja al mundo: nuestro alcance</h1>
       <div class="flourish-embed flourish-map" data-src="visualisation/20858873"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20858873/thumbnail" width="100%" alt="map visualization" /></noscript></div>
       <br>
 
@@ -255,6 +256,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: transform 0.3s ease;
 }
 
 /* Ajuste de tamaño de imagen */
@@ -267,8 +269,8 @@
 }
 
 /* Efecto hover */
-.receta:hover img {
-    transform: scale(1.1);
+.receta.show-hover img {
+    transform: scale(1.1);  /* Agranda la imagen cuando la receta es visible */
 }
 
 /* Hover-text */
@@ -287,8 +289,8 @@
     transition: opacity 0.3s ease;
 }
 
-.receta:hover .hover-text {
-    opacity: 1;
+.receta.show-hover .hover-text {
+    opacity: 1;  /* Muestra el texto cuando la receta está en hover */
 }
 
 /* Botón */
@@ -307,9 +309,9 @@
     z-index: 1;
 }
 
-.receta:hover .btn-ver-receta {
+.receta.show-hover .btn-ver-receta {
     opacity: 1;
-    transform: translateY(-10px) scale(1.1);
+    transform: translateY(-10px) scale(1.1);  /* Efecto en el botón */
 }
 
 /* Ajustes para dispositivos pequeños */
@@ -346,6 +348,7 @@
         padding: 8px 16px;  /* Ajusta el tamaño del botón */
     }
 }
+
 
 
 
