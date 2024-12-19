@@ -268,9 +268,9 @@
     border-radius: 10px;
 }
 
-/* Efecto hover */
-.receta.show-hover img {
-    transform: scale(1.1);  /* Agranda la imagen cuando la receta es visible */
+/* Efecto hover para dispositivos con mouse */
+.receta:hover img {
+    transform: scale(1.1);  /* Agranda la imagen cuando se hace hover */
 }
 
 /* Hover-text */
@@ -289,8 +289,8 @@
     transition: opacity 0.3s ease;
 }
 
-.receta.show-hover .hover-text {
-    opacity: 1;  /* Muestra el texto cuando la receta está en hover */
+.receta:hover .hover-text {
+    opacity: 1;  /* Muestra el texto cuando la receta tiene hover */
 }
 
 /* Botón */
@@ -307,6 +307,20 @@
     width: fit-content;
     position: relative;
     z-index: 1;
+}
+
+.receta:hover .btn-ver-receta {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.1);  /* Efecto en el botón */
+}
+
+/* Ajustes para dispositivos con 70% de visibilidad */
+.receta.show-hover img {
+    transform: scale(1.1);  /* Agranda la imagen cuando la receta es visible */
+}
+
+.receta.show-hover .hover-text {
+    opacity: 1;  /* Muestra el texto cuando la receta está en hover */
 }
 
 .receta.show-hover .btn-ver-receta {
@@ -348,6 +362,7 @@
         padding: 8px 16px;  /* Ajusta el tamaño del botón */
     }
 }
+
 
 
 
