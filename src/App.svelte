@@ -93,31 +93,31 @@
           <div class="receta">
             <img src="./images/Brownie de Pistacho.jpeg" alt="Brownie de Pistacho" />
             <div class="hover-text">Brownie de Pistacho</div>
-            <a href="https://drive.google.com/file/d/1Zbw5SykhiiRfSp2-pC5lcwBqAvM51w4r/view?usp=sharing" target="_blank" class="btn-ver-receta">Ver receta</a>
+            <a href="https://drive.google.com/file/d/1ASjwHNIaNYszFCMRZSmtb848PJkgLRZg/view?usp=sharing" target="_blank" class="btn-ver-receta">Ver receta</a>
           </div>
           <!-- Receta 2 -->
           <div class="receta">
             <img src="./images/Baklava.jpeg" alt="Baklava" />
             <div class="hover-text">Baklava de Pistacho</div>
-            <a href="https://drive.google.com/file/d/1V6sNBDheU02jBE7tzeNJjLJNlpkNbT8y/view?usp=sharing" target="_blank" class="btn-ver-receta">Ver receta</a>
+            <a href="https://drive.google.com/file/d/1r3VQnVpUyxmnwXWGs8SemCGaLiBKmScE/view?usp=sharing" target="_blank" class="btn-ver-receta">Ver receta</a>
           </div>
           <!-- Receta 3 -->
           <div class="receta">
             <img src="./images/Queso.jpeg" alt="Queso" />
             <div class="hover-text">Queso con Pistacho</div>
-            <a href="https://drive.google.com/file/d/1hwa1G7DXF9gmWTH-C3S8fcfvd9gKICJP/view?usp=sharing" target="_blank" class="btn-ver-receta">Ver receta</a>
+            <a href="https://drive.google.com/file/d/1qWyoHTN51e4i0o8e8_FapCsSJhkCUc9t/view?usp=sharing" target="_blank" class="btn-ver-receta">Ver receta</a>
           </div>
           <!-- Receta 4 -->
           <div class="receta">
             <img src="./images/Crema de Pistacho.jpeg" alt="Brownie de Pistacho" />
             <div class="hover-text">Crema de Pistacho</div>
-            <a href="https://drive.google.com/file/d/1Gv9wytTSmbYasBnLOxM8PZKojaWBYxqJ/view?usp=sharing" target="_blank" class="btn-ver-receta" >Ver receta</a>
+            <a href="https://drive.google.com/file/d/1EaWcLLZRK1M0UEYfJ9T_Xm8azDYD8pAA/view?usp=sharing" target="_blank" class="btn-ver-receta" >Ver receta</a>
           </div>
           <!-- Receta 5 -->
           <div class="receta">
             <img src="./images/Trufas.jpeg" alt="Baklava" />
             <div class="hover-text">Trufas de Pistacho, Palta y Chocolate</div>
-            <a href="https://drive.google.com/file/d/1loEPgKMhqq6IPenL4eDia_CM901GDa6R/view?usp=sharing" target="_blank" class="btn-ver-receta">Ver receta</a>
+            <a href="https://drive.google.com/file/d/166AyeBcA_4nVvagtlAALTjaTE_pYXHzF/view?usp=sharing" target="_blank" class="btn-ver-receta">Ver receta</a>
           </div> 
         </div>
       </div>
