@@ -226,122 +226,107 @@
 
  /* Recetas */
 .recetas-container {
-  overflow: visible; /* Cambiado temporalmente para pruebas */
-  display: flex;
-  justify-content: flex-start;
-  width: 100%;
-  padding: 20px;
-  margin-bottom: 20px;
-  scrollbar-width: none; /* Para Firefox */
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+    overflow-x: auto; /* Habilita el scroll horizontal */
+    scrollbar-width: none; /* Para Firefox */
 }
 
 .recetas-container::-webkit-scrollbar {
-  display: none; /* Oculta la barra de desplazamiento en Chrome, Safari y Edge */
+    display: none; /* Oculta la barra de desplazamiento en Chrome, Safari y Edge */
 }
 
 .recetas {
-  display: flex;
-  gap: 20px;
-  width: 100%;
-  flex-wrap: nowrap;
+    display: flex;
+    gap: 20px;
+    width: max-content; /* Asegura que el contenedor se ajuste al contenido */
+    flex-wrap: nowrap;
 }
 
 .receta {
-  position: relative;
-  width: 300px; /* Tamaño de cada receta */
-  height: 400px; /* Ajusta según el tamaño que quieras */
-  text-align: center;
-  flex-shrink: 0; /* Impide que las recetas se reduzcan */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    position: relative;
+    width: 300px; /* Tamaño de cada receta */
+    height: 400px; /* Ajusta según el tamaño que quieras */
+    text-align: center;
+    flex-shrink: 0; /* Impide que las recetas se reduzcan */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .receta img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-  border-radius: 10px; /* Bordes redondeados */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    border-radius: 10px; /* Bordes redondeados */
 }
 
 .receta:hover img {
-  transform: scale(1.1); /* Zoom al hacer hover sobre la imagen */
+    transform: scale(1.1); /* Zoom al hacer hover sobre la imagen */
 }
 
 .hover-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: black;
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-  padding: 10px;
-  border-radius: 10px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .receta:hover .hover-text {
-  opacity: 1; /* Muestra el texto al hacer hover sobre la receta */
+    opacity: 1; /* Muestra el texto al hacer hover sobre la receta */
 }
 
 .btn-ver-receta {
-  background-color: black;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 20px;
-  text-decoration: none;
-  font-weight: bold;
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  margin: 0 auto; /* Centra el botón horizontalmente */
-  width: fit-content; /* Asegura que el ancho del botón sea el adecuado */
-  position: relative; /* Para asegurar que el botón esté posicionado correctamente */
-  z-index: 1; /* Asegura que el botón esté por encima de otros elementos */
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    margin: 0 auto; /* Centra el botón horizontalmente */
+    width: fit-content; /* Asegura que el ancho del botón sea el adecuado */
+    position: relative; /* Para asegurar que el botón esté posicionado correctamente */
+    z-index: 1; /* Asegura que el botón esté por encima de otros elementos */
 }
 
 .receta:hover .btn-ver-receta {
-  opacity: 1;
-  transform: translateY(-10px) scale(1.1); /* Combina ambos efectos */
+    opacity: 1;
+    transform: translateY(-10px) scale(1.1); /* Combina ambos efectos */
 }
 
 /* Nueva clase para hover automático */
 .receta.show-hover .hover-text {
-  opacity: 1; /* Muestra el texto automáticamente */
+    opacity: 1; /* Muestra el texto automáticamente */
 }
 
 .receta.show-hover .btn-ver-receta {
-  opacity: 1;
-  transform: translateY(-10px) scale(1.1); /* Aplica el mismo efecto que en el hover */
+    opacity: 1;
+    transform: translateY(-10px) scale(1.1); /* Aplica el mismo efecto que en el hover */
 }
 
 /* Estilo para receta en pantalla completa */
 .receta.fullscreen .hover-text {
-  opacity: 1;
+    opacity: 1;
 }
 
 .receta.fullscreen img {
-  transform: scale(1.1);
-  border-radius: 10px; /* Mantén los bordes redondeados */
-  transition: transform 0.3s ease; /* Transición suave */
-}
-
-.receta.fullscreen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 999;
-  background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro, opacidad ajustada */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+    transform: scale(1.1);
+    border-radius: 10px; /* Mantén los bordes redondeados */
+    transition: transform 0.3s ease; /* Transición suave */
 }
 
 /* Ajustes para pantallas pequeñas */
