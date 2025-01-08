@@ -42,3 +42,21 @@ h1 {
   /* padding: 2rem; */
   /* text-align: center; */
 }
+
+/* Reinicio global para todos los enlaces */
+a {
+  all: unset; /* Elimina todos los estilos predeterminados del navegador */
+  cursor: pointer; /* Mantén el cursor de "enlace" */
+  text-decoration: none; /* Asegúrate de que no se subraye */
+  color: inherit; /* Usa el color actual del texto */
+}
+
+/* Opcional: Estilo específico para el menú */
+.menu-link {
+  color: #FFFFFF; /* Blanco para los enlaces del menú */
+  font-weight: bold; /* Enfatiza el texto */
+}
+
+.menu-link:hover {
+  color: black; /* Azul al pasar el cursor */
+}

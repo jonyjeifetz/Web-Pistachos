@@ -24,6 +24,14 @@
     gmailLink.href = "https://mail.google.com/mail/?view=cm&fs=1&to=" + emailAddress + "&su=Mas%20Informacion&body=" + encodedMessage;
   }
 };
+
+import { Router, Route, Link } from 'svelte-routing';
+import Inicio from './components/Inicio.svelte';
+import AcercaDeNosotros from './components/AcercaDeNosotros.svelte';
+import AcercaDelPistacho from './components/AcercaDelPistacho.svelte';
+import UltimasNoticiasDelPistacho from './components/UltimasNoticiasDelPistacho.svelte';
+import ResposabilidadSocialEmpresarial from './components/ResposabilidadSocialEmpresarial.svelte';
+import NuestraGente from './components/NuestraGente.svelte';
 </script>
 
 <!-- Codigo HTML -->
@@ -36,118 +44,29 @@
         src="./images/Logo-Pistachos.png"
         alt="Logo-Pistachos-Riojanos"
       />
-    </div> 
+    </div>     
 
-    <div class="cuerpo">
-      <!-- Acerca de Nosotros -->
-      <div class="acerca-de-nosotros">
-        <h1>Acerca de Nosotros</h1>
-        <div class="nuestros-valores">
-          <h3>Nuestros valores</h3>
-          <p style="text-align: left; margin-top: -3%"><strong style="text-decoration: underline;">Compromiso:</strong> Construimos relaciones de largo plazo con nuestros colaboradores, clientes, proveedores y todas las partes interesadas.
-          <br>
-          <strong style="text-decoration: underline;">Creatividad:</strong> Pensar, re pensar, co crear buscando mejores soluciones que nos permitan dar lo mejor de nosotros.
-          <br>
-          <strong style="text-decoration: underline;">Transparencia:</strong> Comunicamos internamente las razones de nuestras acciones con el objetivo de crear conocimiento de manera colectiva y poder delegar la toma de decisiones. Recibimos positivamente toda retroalimentación de nuestros colaboradores.
-          <br>
-          <strong style="text-decoration: underline;">Sinergia:</strong> Contribuimos con el otro para la concreción de los objetivos y obtener resultados más positivos.
-          <br>
-          <strong style="text-decoration: underline;">Convivencia Positiva:</strong> Mantenemos vínculos saludables y propiciamos la felicidad y el disfrute durante el desarrollo de la actividad laboral.
-          <br>
-          <strong style="text-decoration: underline;">Crecimiento y Desarrollo:</strong> Alentamos el crecimiento y desarrollo de todos nuestros colaboradores y clientes.</p>
-        </div>
-      </div>
-
-      <!-- Acerca del Pistacho -->
-      <div class="acerca-del-pistacho">
-          <h1>Acerca del Pistacho</h1>
-          <div class="historia-del-pistacho">
-            <h3>Historia del Pistacho</h3>
-            <p style="text-align: left; margin-top: -3%">El pistacho nace del árbol pistachero o alfóncigo, denominado Pistacia Vera, perteneciente a la misma familia que el del anacardo. Sus orígenes se remontan a Asia occidental y Asia menor, donde comenzaron a cultivarse por primera vez en las zonas más secas de Irán, Turkmenistán, Turquía y Afganistán. 
-              De hecho, uno de los requisitos para que el alfóndigo dé sus frutos es que haya sido cultivado en zonas con mucho calor y con ambientes con índices de humedad bajos.
-            <br>
-            Ya conocido por los egipcios, griegos y romanos, el pistacho atravesó Siria para aterrizar en Italia en el siglo I, extendiéndose más tarde por el mediterráneo.
-            Hoy en día, este fruto seco ya se cultiva en todo el sur de Europa y el norte de África, además de otras zonas como California, Nuevo México o Austria. Sin embargo, Oriente Medio sigue siendo la cuna del pistacho por excelencia.
-            <br>
-            Y aunque comer pistachos hoy en día es de lo más habitual, no siempre ha sido así. En sus orígenes estaba considerado como un producto exclusivo de las clases sociales más elevadas. Tanto, que una de las leyendas cuenta que hace más de 3.000 años la reina de Saba quedó prendada de este fruto seco, elevándolo a alimento exclusivo de la realeza, 
-            y prohibiéndolo al pueblo.
-            </p>
-          </div>
-          <div class="propiedades-del-pistacho">
-            <h3>Propiedades del Pistacho</h3>
-            <p style="text-align: left; margin-top: -3%">La cáscara que recubre el pistacho alberga en su interior un fruto verde enormemente nutritivo, alargado y de un tamaño parecido al de una avellana. Frito, tostado o con un toque extra de sal, el pistacho es igualmente delicioso. Sin embargo, consumirlo crudo sigue siendo la opción más saludable.
-            Entre la larga lista de propiedades del pistacho, la Fundación Española de la Nutrición (FEN) destaca los siguientes:</p>
-            <ul style="text-align: left; margin-top: -3%; list-style-position: inside; padding-left: 0; color: #FFFFFF; display: inline-block;">
-              <li>Alto contenido en grasas insaturadas (grasas buenas).</li>
-              <li>Gran aporte de hidratos de carbono.</li>
-              <li>Buena fuente de proteínas vegetales.</li>
-              <li>Elevado poder antioxidante.</li>
-              <li>Abundante contenido de vitaminas B6 y E, zinc, potasio y fósforo.</li>
-              <li>Muy ricos en magnesio, hierro y calcio.</li>
-            </ul> 
-          </div>
-          <div class="beneficios-del-pistacho">
-            <h3>Beneficios del Pistacho</h3>
-            <ul style="text-align: left; margin-top: -1%; list-style-position: inside; padding-left: 0; color: #FFFFFF; display: inline-block;">
-              <li>Mejora la salud cardiovascular y el colesterol.</li>
-              <li>Rico en antioxidantes.</li>
-              <li>Posee un alto valor nutritivo.</li>
-              <li>Reduce el estrés y la anemia.</li>
-              <li>Ayuda a prevenir la obesidad y la diabetes.</li>
-            </ul>            
-          </div>         
-      </div>
-      <!-- Mapa -->
-      <h1>De La Rioja al mundo: nuestro alcance</h1>
-      <div class="flourish-embed flourish-map" data-src="visualisation/20858873"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20858873/thumbnail" width="100%" alt="map visualization" /></noscript></div>
-      <br>
-
-      <!-- Recetas -->
-      <h1>De La Rioja a Tu Mesa: Recetas Creativas con Pistacho</h1>
-      <div class="recetas-container">
-        <div class="recetas">
-          <!-- Receta 1 -->
-          <div class="receta">
-            <img src="./images/Brownie de Pistacho.jpeg" alt="Brownie de Pistacho" />
-            <div class="hover-text">Brownie de Pistacho</div>
-            <a href="./Recetas/Receta Brownie de Pistacho.pdf" target="_blank" class="btn-ver-receta">Ver receta</a>
-          </div>
-          <!-- Receta 2 -->
-          <div class="receta">
-            <img src="./images/Baklava.jpeg" alt="Baklava" />
-            <div class="hover-text">Baklava de Pistacho</div>
-            <a href="./Recetas/Receta Baklava de Pistacho.pdf" target="_blank" class="btn-ver-receta">Ver receta</a>
-          </div>
-          <!-- Receta 3 -->
-          <div class="receta">
-            <img src="./images/Queso.jpeg" alt="Queso" />
-            <div class="hover-text">Queso con Pistacho</div>
-            <a href="./Recetas/Receta Queso de Pistacho.pdf" target="_blank" class="btn-ver-receta">Ver receta</a>
-          </div>
-          <!-- Receta 4 -->
-          <div class="receta">
-            <img src="./images/Crema de Pistacho.jpeg" alt="Crema de Pistacho" />
-            <div class="hover-text">Crema de Pistacho</div>
-            <a href="./Recetas/Receta Crema Pistacho.pdf" target="_blank" class="btn-ver-receta" >Ver receta</a>
-          </div>
-          <!-- Receta 5 -->
-          <div class="receta">
-            <img src="./images/Trufas.jpeg" alt="Trufas de Pistacho" />
-            <div class="hover-text">Trufas de Pistacho, Palta y Chocolate</div>
-            <a href="./Recetas/Receta Trufas de Pistacho, Palta y Chocolate.pdf" target="_blank" class="btn-ver-receta">Ver receta</a>
-          </div> 
-        </div>
-      </div>
-
-      <!-- Ultimas noticias del pistacho -->
-      <h1 style="font-family: montserrat;">Ultimas Noticias del Pistacho</h1>
-
-      <!-- Responsabilidad Social Empresarial -->
-      <h1 style="font-family: montserrat;">Responsabilidad Social Empresarial</h1>
-
-      <!-- Nuestra Gente -->
-      <h1 style="font-family: montserrat;">Nuestra Gente</h1>
-    </div>
+    <Router>
+      <!-- Menú de navegación -->
+      <nav>
+        <ul>
+          <li><Link to="/"><a href="/">Inicio</a></Link></li>
+          <li><Link to="/acerca-de-nosotros"><a href="/acerca-de-nosotros">Acerca de Nosotros</a></Link></li>
+          <li style="color: #FFFFF;"><Link to="/acerca-del-pistacho"><a href="/acerca-del-pistacho">Acerca del Pistacho</a></Link></li>
+          <li><Link to="/ultimas-noticias-del-pistacho"><a href="/ultimas-noticias-del-pistacho">Ultimas Noticias del Pistacho</a></Link></li>
+          <li><Link to="/responsabilidad-social-empresarial"><a href="/responsabilidad-social-empresarial">Responsabilidad Social Empresarial</a></Link></li>
+          <li><Link to="/nuestra-gente"><a href="/nuestra-gente">Nuestra Gente</a></Link></li>
+        </ul>
+      </nav>
+    
+      <!-- Las rutas definidas -->
+      <Route path="/" component={Inicio} />
+      <Route path="/acerca-de-nosotros" component={AcercaDeNosotros} />
+      <Route path="/acerca-del-pistacho" component={AcercaDelPistacho} />
+      <Route path="/ultimas-noticias-del-pistacho" component={UltimasNoticiasDelPistacho} />
+      <Route path="/responsabilidad-social-empresarial" component={ResposabilidadSocialEmpresarial} />
+      <Route path="/nuestra-gente" component={NuestraGente} />
+    </Router>
 
     <div class="footer">
       <h4>¿Preguntas? ¡Estamos a un clic de distancia!</h4>
@@ -174,6 +93,48 @@
 <!-- Codigo CSS -->
 
 <style>
+
+  /* Estilos para el menú */
+  nav {
+    background-color: rgb(0, 0, 0); /* Fondo negro */
+    padding: 10px; /* Espaciado interno */
+  }
+
+  nav ul {
+    list-style-type: none; /* Eliminar los puntos de la lista */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Esto pone los elementos de la lista en una fila */
+    justify-content: center; /* Centra los elementos del menú */
+  }
+
+  nav li {
+    position: relative; /* Necesario para el pseudo-elemento */
+    margin-right: 20px; /* Espaciado entre los elementos del menú */
+  }
+
+  nav li::after {
+    content: '|'; /* Agrega el separador */
+    position: absolute;
+    right: -10px; /* Ajusta la posición del separador */
+    color: white; /* Color del separador */
+    font-weight: bold;
+  }
+
+  nav li:last-child::after {
+    content: ''; /* Elimina el separador del último elemento */
+  }
+
+  nav ul li a {
+    color: white; /* Texto en blanco */
+    text-decoration: none; /* Sin subrayado */
+    font-size: 19px; /* Aumenta el tamaño de la fuente */
+  }
+
+  nav ul li a:hover {
+    text-decoration: underline; /* Subrayado al pasar el ratón */
+  }
+
  /* Body */
  body{
     background-color:#80A54D; /* Color Pistacho */
@@ -184,267 +145,21 @@
     width: 100%; /* Ajusta el ancho al 100% */
   }
 
- /* Cuerpo */
- .cuerpo{
-    margin: 8px; /* Margen predeterminado */
-    padding: 0;  /* Relleno desactivado para evitar inconsistencias */
-    text-align: center; /* Centra el contenido */
-    flex: 1; /* Ocupa el espacio restante entre el header y el footer */
-  }
-
- .cuerpo h1, h3 {
-    font-family: montserrat;
-    color: #FFFFFF;
-  }
-
-  /* Ajustes generales para los h1 en pantallas grandes */
-  .cuerpo h1 {
-      font-size: 36px; /* Tamaño de fuente por defecto */
-      margin-bottom: 10px; /* Espacio debajo del título */
-  }
-
-  @media (max-width: 768px) {
-    .cuerpo h1 {
-        font-size: 32px; /* Tamaño ajustado para pantallas móviles */
-        line-height: 1.2; /* Ajuste del interlineado para evitar exceso de espacio */
-        margin-bottom: 5px; /* Menos espacio debajo del título */
-        font-weight: bold; /* Hacer que el título sea en negrita */
-    }
-
-    .cuerpo h3 {
-        font-size: 26px; /* Tamaño ajustado para h3 en pantallas móviles */
-        line-height: 1.3; /* Ajuste del interlineado para h3 */
-        margin-bottom: 5px; /* Ajuste del espacio debajo de h3 */
-    }
-  }
-
-  .cuerpo p {
-    font-family: roboto;
-    color: #FFFFFF;
-    padding: 1rem 0;
-    text-align: center;
-  }
 
   /* Header */
  .header{
     background-color: #FFFFFF; /* Color de fondo */
     text-align: center; /* Centra el contenido */
+    position: relative;
   }
 
  .header img {
     max-width: 100%; /* Hace que la imagen no se salga del contenedor */
     height: auto; /* Mantiene la relación de aspecto */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+    display: block; /* Evita espacios extra en línea */
   }
 
-  /* Acerca de Nosotros */
-  .acerca-de-nosotros {
-    text-align: center; /* Centra el contenido */
-    margin: 20px 0; /* Espacio arriba y abajo */
-  }
-
-  .nuestros-valores {
-      text-align: center; /* Centra el contenido */
-      margin: 0 auto; /* Centra el contenido */
-      max-width: 650px; /* Ancho máximo del contenido */
-  }
-
-  .acerca-de-nosotros h1 {
-      margin-bottom: 10px; /* Reduce la distancia entre el título principal y el siguiente contenido */
-  }
-
-  .nuestros-valores h3 {
-      margin-top: 20px; /* Espaciado uniforme antes del subtítulo */
-      margin-bottom: 15px; /* Espaciado uniforme después del subtítulo */
-  }
-
-  .nuestros-valores p {
-      text-align: left; /* Alinea el texto a la izquierda */
-      margin-top: 0; /* Evita espacio adicional antes del contenido */
-      margin-bottom: 20px; /* Espaciado uniforme después del contenido */
-  }
-
-  .nuestros-valores strong {
-      text-decoration: underline; /* Mantiene el subrayado para destacar los valores */
-      font-weight: bold; /* Asegura que el texto sea negrita */
-  }
-
-  /* Acerca del Pistacho */
-  .acerca-del-pistacho {
-    text-align: center; /* Centra el contenido */
-    margin: 20px 0; /* Espacio arriba y abajo */
-  }
-
-  .historia-del-pistacho,
-  .propiedades-del-pistacho,
-  .beneficios-del-pistacho {
-      text-align: center; /* Centra el contenido */
-      margin: 0 auto; /* Centra el contenido */
-      max-width: 650px; /* Ancho máximo del contenido */
-  }
-
-  .acerca-del-pistacho h1 {
-      margin-bottom: 20px; /* Espaciado uniforme después del título principal */
-  }
-
-  .historia-del-pistacho h3,
-  .propiedades-del-pistacho h3,
-  .beneficios-del-pistacho h3 {
-      margin-top: 30px; /* Espaciado uniforme antes de los subtítulos */
-      margin-bottom: 15px; /* Espaciado uniforme después de los subtítulos */
-  }
-
-  .historia-del-pistacho p,
-  .propiedades-del-pistacho p,
-  .propiedades-del-pistacho ul,
-  .beneficios-del-pistacho ul {
-      margin-top: 0; /* Evita espacio adicional antes del contenido */
-      margin-bottom: 20px; /* Espaciado uniforme después del contenido */
-  }
-
-  /* Recetas */
-  .recetas-container {
-      display: flex;
-      justify-content: flex-start;
-      width: 100%;
-      padding: 20px;
-      margin-bottom: 20px;
-      overflow-x: auto;
-      scrollbar-width: none;
-  }
-
-  .recetas-container::-webkit-scrollbar {
-      display: none;
-  }
-
-  .recetas {
-      display: flex;
-      gap: 20px;
-      width: max-content;
-      flex-wrap: nowrap;
-  }
-
-  .receta {
-      position: relative;
-      width: 300px;  /* Tamaño base para pantallas grandes */
-      height: 400px;
-      text-align: center;
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.3s ease;
-  }
-
-  /* Ajuste de tamaño de imagen */
-  .receta img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-      border-radius: 10px;
-  }
-
-  /* Efecto hover para dispositivos con mouse */
-  .receta:hover img {
-      transform: scale(1.1);  /* Agranda la imagen cuando se hace hover */
-  }
-
-  /* Hover-text */
-  .hover-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: black;
-      color: white;
-      font-size: 24px;
-      font-weight: bold;
-      padding: 10px;
-      border-radius: 10px;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-  }
-
-  .receta:hover .hover-text {
-      opacity: 1;  /* Muestra el texto cuando la receta tiene hover */
-  }
-
-  /* Botón */
-  .btn-ver-receta {
-      background-color: black;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 20px;
-      text-decoration: none;
-      font-weight: bold;
-      opacity: 0;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      margin: 0 auto;
-      width: fit-content;
-      position: relative;
-      z-index: 1;
-  }
-
-  .receta:hover .btn-ver-receta {
-      opacity: 1;
-      transform: translateY(-10px) scale(1.1);  /* Efecto en el botón */
-  }
-
-  /* Ajustes para dispositivos pequeños */
-  @media (max-width: 768px) {
-      .receta {
-          width: 250px;  /* Reduce el tamaño de cada receta en pantallas pequeñas */
-          height: 350px;
-      }
-
-      .receta img {
-          width: 100%;
-          height: auto;  /* Ajuste para que las imágenes se mantengan proporcionadas */
-      }
-  }
-
-  /* Ajustes para dispositivos aún más pequeños */
-  @media (max-width: 480px) {
-      .receta {
-          width: 200px;  /* Ajuste para pantallas aún más pequeñas */
-          height: 300px;
-      }
-
-      .receta img {
-          width: 100%;
-          height: auto;
-      }
-
-      .hover-text {
-          font-size: 18px;  /* Ajusta el tamaño de la fuente para pantallas pequeñas */
-          padding: 5px;
-      }
-
-      .btn-ver-receta {
-          font-size: 14px;  /* Reduce el tamaño del texto en el botón */
-          padding: 8px 16px;  /* Ajusta el tamaño del botón */
-      }
-  }
-
-  /* Efecto hover automático para imágenes en dispositivos táctiles con 70% de visibilidad */
-  .receta img {
-      transition: transform 0.3s ease;
-  }
-
-  /* Hover automático para dispositivos táctiles, cuando la imagen es visible al 70% */
-  .receta.hover img {
-      transform: scale(1.1); /* Agranda la imagen cuando está al 70% visible */
-  }
-
-  /* Efecto hover en dispositivos con mouse */
-  .receta.mouse-hover:hover img {
-      transform: scale(1.1); /* Efecto hover manual */
-  }
-
-  .receta.show-hover img {
-    transform: scale(1.1);  /* Agranda la imagen cuando se activa el hover */
-}
-  
   /* Footer */
     .footer {
     background-color: #FFFFFF; /* Color de fondo */
@@ -498,15 +213,6 @@
     text-align: center; /* Centra el texto */
   }
 
-  /* Borrado de marca de agua flourish */
-  .flourish-embed {
-    width: 100%;
-    max-width: 100%; /* Impide que el mapa se salga de la pantalla */
-    overflow-x: hidden; /* Evita el desplazamiento horizontal del mapa */
-  }
-
-  * {
-    box-sizing: border-box; /* Asegura que los márgenes y rellenos no causen desbordes */
-  }
+  
 
 </style>
