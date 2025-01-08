@@ -457,7 +457,7 @@
   /* Estilos para dispositivos móviles */
   @media (max-width: 600px) {
       .footer .social-icons {
-          gap: 2rem; /* Reduce el espacio entre las imágenes */
+          gap: 5rem; /* Reduce el espacio entre las imágenes */
       }
 
       .footer img {
