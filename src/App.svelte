@@ -2,101 +2,99 @@
 
 <script>
   window.onload = function() {
-    // Número de teléfono para WhatsApp
-    var phoneNumber = "+5491127161950"; 
-    var prewrittenMessage = "¡Hola! Estoy interesado en saber más sobre los pistachos de La Rioja.";
-    var encodedMessage = encodeURIComponent(prewrittenMessage);
-    var emailAddress = "info@pistachosriojanos.com"; 
-    
-    var instagramLink = document.getElementById("instagram-link");
-    var whatsappLink = document.getElementById("whatsapp-link");
-    var gmailLink = document.getElementById("gmail-link");
-    
-    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    
-    if (isMobile && !/iPad/i.test(navigator.userAgent)) {
-      whatsappLink.href = "https://wa.me/" + phoneNumber + "?text=" + encodedMessage;
-      instagramLink.href = "instagram://user?username=pistachosriojanos";
-      gmailLink.href = "mailto:" + emailAddress + "?subject=Mas Informacion&body=" + encodedMessage;
-    } else {
-      whatsappLink.href = "https://web.whatsapp.com/send?phone=" + phoneNumber + "&text=" + encodedMessage;
-      instagramLink.href = "https://www.instagram.com/pistachosriojanos";
-      gmailLink.href = "https://mail.google.com/mail/?view=cm&fs=1&to=" + emailAddress + "&su=Mas%20Informacion&body=" + encodedMessage;
+  // Número de teléfono para WhatsApp
+  var phoneNumber = "+5491127161950"; 
+  var prewrittenMessage = "¡Hola! Estoy interesado en saber más sobre los pistachos de La Rioja.";
+  var encodedMessage = encodeURIComponent(prewrittenMessage);
+  var emailAddress = "info@pistachosriojanos.com"; 
+  
+  var instagramLink = document.getElementById("instagram-link");
+  var whatsappLink = document.getElementById("whatsapp-link");
+  var gmailLink = document.getElementById("gmail-link");
+  
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  
+  if (isMobile && !/iPad/i.test(navigator.userAgent)) {
+    whatsappLink.href = "https://wa.me/" + phoneNumber + "?text=" + encodedMessage;
+    instagramLink.href = "instagram://user?username=pistachosriojanos";
+    gmailLink.href = "mailto:" + emailAddress + "?subject=Mas Informacion&body=" + encodedMessage;
+  } else {
+    whatsappLink.href = "https://web.whatsapp.com/send?phone=" + phoneNumber + "&text=" + encodedMessage;
+    instagramLink.href = "https://www.instagram.com/pistachosriojanos";
+    gmailLink.href = "https://mail.google.com/mail/?view=cm&fs=1&to=" + emailAddress + "&su=Mas%20Informacion&body=" + encodedMessage;
+  }
+
+  // Activar la clase .show-hover cuando las recetas son completamente visibles
+  const recetas = document.querySelectorAll(".receta");
+
+  // Observador de intersección
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.7) {
+          // Agrega la clase .show-hover si el 70% del elemento es visible
+          entry.target.classList.add("show-hover");
+        } else {
+          // Elimina la clase .show-hover si menos del 70% es visible
+          entry.target.classList.remove("show-hover");
+        }
+      });
+    },
+    {
+      threshold: [0.7] // Detecta cuando al menos el 70% del elemento es visible
     }
+  );
 
-    // Activar la clase .show-hover cuando las recetas son completamente visibles
-    const recetas = document.querySelectorAll(".receta");
+  // Observar cada receta
+  recetas.forEach((receta) => observer.observe(receta));
 
-    // Observador de intersección
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.7) {
-            // Agrega la clase .show-hover si el 70% del elemento es visible
-            entry.target.classList.add("show-hover");
-          } else {
-            // Elimina la clase .show-hover si menos del 70% es visible
-            entry.target.classList.remove("show-hover");
-          }
-        });
-      },
-      {
-        threshold: [0.7] // Detecta cuando al menos el 70% del elemento es visible
-      }
-    );
+  // Alternar manualmente fullscreen en click
+  recetas.forEach((receta) => {
+    receta.addEventListener("click", () => {
+      const isFullscreen = receta.classList.contains("fullscreen");
+      // Alternar entre fullscreen y posición original
+      receta.classList.toggle("fullscreen");
 
-    // Observar cada receta
-    recetas.forEach((receta) => observer.observe(receta));
+      // Deshabilitar scroll en el fondo cuando una receta esté en fullscreen
+      document.body.style.overflow = isFullscreen ? "auto" : "hidden";
+    });
+  });
 
-    // Alternar manualmente fullscreen en click
+  // Detectar si el dispositivo es táctil
+  var isTouchDevice = 'ontouchstart' in document.documentElement;
+
+  // Activar automáticamente los hovers en dispositivos táctiles
+  if (isTouchDevice) {
     recetas.forEach((receta) => {
-      receta.addEventListener("click", () => {
-        const isFullscreen = receta.classList.contains("fullscreen");
-        // Alternar entre fullscreen y posición original
-        receta.classList.toggle("fullscreen");
+      receta.classList.add("show-hover");  // Agregar la clase .show-hover de inmediato
+    });
+  } else {
+    // No táctil, solo activar hover con el ratón
+    recetas.forEach((receta) => {
+      receta.addEventListener("mouseenter", () => {
+        // Activar hover para la receta con el ratón
+        receta.classList.add("mouse-hover");
+      });
 
-        // Deshabilitar scroll en el fondo cuando una receta esté en fullscreen
-        document.body.style.overflow = isFullscreen ? "auto" : "hidden";
+      receta.addEventListener("mouseleave", () => {
+        // Desactivar hover cuando el ratón salga de la receta
+        receta.classList.remove("mouse-hover");
       });
     });
+  }
 
-    // Detectar si el dispositivo es táctil
-    var isTouchDevice = 'ontouchstart' in document.documentElement;
-
-    // Activar automáticamente los hovers en dispositivos táctiles
-    if (isTouchDevice) {
-      recetas.forEach((receta) => {
+  // Agregar eventos táctiles para simular el hover en dispositivos sin mouse
+  if (isTouchDevice) {
+    recetas.forEach((receta) => {
+      receta.addEventListener('touchstart', () => {
         receta.classList.add("show-hover");
       });
-    }
 
-    // Activar hover solo cuando la receta sea visible al 70% o más y desactivar el hover en otras imágenes
-    if (!isMobile) {
-      recetas.forEach((receta) => {
-        receta.addEventListener("mouseenter", () => {
-          // Activar hover para la receta con el ratón
-          receta.classList.add("mouse-hover");
-        });
-
-        receta.addEventListener("mouseleave", () => {
-          // Desactivar hover cuando el ratón salga de la receta
-          receta.classList.remove("mouse-hover");
-        });
+      receta.addEventListener('touchend', () => {
+        receta.classList.remove("show-hover");
       });
-    }
-
-    // Agregar eventos táctiles para simular el hover en dispositivos sin mouse
-    if (isTouchDevice) {
-        recetas.forEach((receta) => {
-            receta.addEventListener('touchstart', () => {
-                receta.classList.add("show-hover");
-            });
-
-            receta.addEventListener('touchend', () => {
-                receta.classList.remove("show-hover");
-            });
-        });
-    }
+    });
+  }
 };
 </script>
 
