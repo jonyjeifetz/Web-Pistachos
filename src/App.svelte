@@ -443,6 +443,7 @@
   .footer .social-icons {
     display: flex; /* Alinea las imágenes en una fila */
     justify-content: center; /* Centra las imágenes */
+    align-items: center; /* Asegura la alineación vertical */
     gap: 150px; /* Espacio entre las imágenes */
     flex-wrap: wrap; /* Permite que las imágenes pasen a la siguiente línea si no caben */
     margin: 0 auto; /* Centrado horizontal */
@@ -452,12 +453,14 @@
   .footer img {
       max-width: 50px; /* Ajusta el tamaño de las imágenes */
       height: auto; /* Mantiene la relación de aspecto */
+      display: block; /* Evita espacios extra en línea */
+      margin: 0; /* Asegura que no haya márgenes adicionales */
   }
 
   /* Estilos para dispositivos móviles */
   @media (max-width: 600px) {
       .footer .social-icons {
-          gap: 5rem; /* Reduce el espacio entre las imágenes */
+          gap: 7rem; /* Reduce el espacio entre las imágenes */
       }
 
       .footer img {
