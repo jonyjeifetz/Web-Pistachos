@@ -157,19 +157,24 @@ nav ul li a:hover {
   text-decoration: underline; /* Subrayado al pasar el ratón */
 }
 
-/* Botón de menú para móviles */
+/* Estilos del botón de menú */
 .menu-btn {
-  display: none;
+  display: none; /* Ocultar el botón en tamaños mayores a 600px */
   background: none;
   border: none;
   color: white;
   font-size: 30px;
   cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 9999; /* Asegura que el botón esté por encima de otros elementos */
 }
 
 /* Menú visible cuando se activa */
 .menu {
-  display: flex;
+  display: flex; /* Mostrar el menú como un flexbox */
+  justify-content: center; /* Centrar los elementos dentro del menú */
 }
 
 .menu.visible ul {
@@ -184,11 +189,21 @@ nav ul li a:hover {
   }
 
   .menu-btn {
-    display: block; /* Muestra el botón de menú */
+    display: block; /* Muestra el botón de menú en dispositivos móviles */
   }
 
   .menu.visible ul {
     display: block; /* Muestra el menú cuando se activa */
+  }
+
+  /* Asegura que el texto y los íconos estén alineados y con suficiente espacio */
+  nav ul li {
+    margin-right: 0; /* Elimina el margen derecho para los elementos de la lista */
+    padding: 10px 0; /* Añade un poco de espacio arriba y abajo de los elementos */
+  }
+
+  nav ul li a {
+    font-size: 18px; /* Ajusta el tamaño de la fuente para que se vea bien en móviles */
   }
 }
 
@@ -267,4 +282,5 @@ body {
   color: #666; /* Color del texto */
   text-align: center; /* Centra el texto */
 }
+
 </style>
