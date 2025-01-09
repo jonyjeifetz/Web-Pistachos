@@ -67,11 +67,11 @@ let menuVisible = false;
 
     <Router>
       <!-- Menú de navegación -->
-      <nav>
+      <nav class={menuVisible ? 'menu visible' : 'menu'}>
         <ul>
           <li><a href="#" on:click="{() => window.location.reload()}">Inicio</a></li>
           <li><Link to="/acerca-de-nosotros"><a href="/acerca-de-nosotros">Acerca de Nosotros</a></Link></li>
-          <li style="color: #FFFFF;"><Link to="/acerca-del-pistacho"><a href="/acerca-del-pistacho">Acerca del Pistacho</a></Link></li>
+          <li><Link to="/acerca-del-pistacho"><a href="/acerca-del-pistacho">Acerca del Pistacho</a></Link></li>
           <li><Link to="/ultimas-noticias-del-pistacho"><a href="/ultimas-noticias-del-pistacho">Ultimas Noticias del Pistacho</a></Link></li>
           <li><Link to="/responsabilidad-social-empresarial"><a href="/responsabilidad-social-empresarial">Responsabilidad Social Empresarial</a></Link></li>
           <li><Link to="/nuestra-gente"><a href="/nuestra-gente">Nuestra Gente</a></Link></li>
@@ -113,48 +113,51 @@ let menuVisible = false;
 
 <style>
 
-  /* Estilos para el menú */
-  nav {
-    background-color: rgb(0, 0, 0); /* Fondo negro */
-    padding: 10px; /* Espaciado interno */
-  }
+/* Menú horizontal */
+nav {
+  background-color: rgb(0, 0, 0); /* Fondo negro */
+  padding: 10px; /* Espaciado interno */
+  display: flex; /* Hacemos el contenedor un flexbox */
+  justify-content: center; /* Centra los elementos de la lista horizontalmente */
+  width: 100%; /* Asegura que el nav ocupe todo el ancho disponible */
+}
 
-  nav ul {
-    list-style-type: none; /* Eliminar los puntos de la lista */
-    padding: 0;
-    margin: 0;
-    display: flex; /* Esto pone los elementos de la lista en una fila */
-    justify-content: center; /* Centra los elementos del menú */
-  }
+nav ul {
+  list-style-type: none; /* Eliminar puntos de la lista */
+  padding: 0;
+  margin: 0;
+  display: flex; /* Muestra los elementos en una fila */
+  justify-content: center; /* Centra los elementos dentro de la lista */
+}
 
-  nav li {
-    position: relative; /* Necesario para el pseudo-elemento */
-    margin-right: 20px; /* Espaciado entre los elementos del menú */
-  }
+nav li {
+  position: relative; /* Necesario para el pseudo-elemento */
+  margin-right: 20px; /* Espaciado entre los elementos */
+}
 
-  nav li::after {
-    content: '|'; /* Agrega el separador */
-    position: absolute;
-    right: -10px; /* Ajusta la posición del separador */
-    color: white; /* Color del separador */
-    font-weight: bold;
-  }
+nav li::after {
+  content: '|'; /* Separador entre elementos */
+  position: absolute;
+  right: -10px;
+  color: white;
+  font-weight: bold;
+}
 
-  nav li:last-child::after {
-    content: ''; /* Elimina el separador del último elemento */
-  }
+nav li:last-child::after {
+  content: ''; /* Elimina el separador del último elemento */
+}
 
-  nav ul li a {
-    color: white; /* Texto en blanco */
-    text-decoration: none; /* Sin subrayado */
-    font-size: 19px; /* Aumenta el tamaño de la fuente */
-  }
+nav ul li a {
+  color: white; /* Texto en blanco */
+  text-decoration: none; /* Sin subrayado */
+  font-size: 19px; /* Tamaño de la fuente */
+}
 
-  nav ul li a:hover {
-    text-decoration: underline; /* Subrayado al pasar el ratón */
-  }
+nav ul li a:hover {
+  text-decoration: underline; /* Subrayado al pasar el ratón */
+}
 
-  /* Botón de menú para móviles */
+/* Botón de menú para móviles */
 .menu-btn {
   display: none;
   background: none;
@@ -164,12 +167,13 @@ let menuVisible = false;
   cursor: pointer;
 }
 
+/* Menú visible cuando se activa */
 .menu {
   display: flex;
 }
 
-.menu.visible {
-  display: block;
+.menu.visible ul {
+  display: block; /* Muestra el menú cuando se activa */
 }
 
 /* Estilos para dispositivos móviles */
@@ -187,84 +191,80 @@ let menuVisible = false;
     display: block; /* Muestra el menú cuando se activa */
   }
 }
- /* Body */
- body{
-    background-color:#80A54D; /* Color Pistacho */
-    font-family: Arial, sans-serif; /* Fuente básica */
-    margin: 0; /* Elimina el margen por defecto del body */
-    padding: 0; /* Elimina el relleno por defecto del body */
-    overflow-x: hidden; /* Evita el scroll horizontal */
-    width: 100%; /* Ajusta el ancho al 100% */
-  }
 
+/* Body */
+body {
+  background-color: #80A54D; /* Color Pistacho */
+  font-family: Arial, sans-serif; /* Fuente básica */
+  margin: 0; /* Elimina el margen por defecto del body */
+  padding: 0; /* Elimina el relleno por defecto del body */
+  overflow-x: hidden; /* Evita el scroll horizontal */
+  width: 100%; /* Ajusta el ancho al 100% */
+}
 
-  /* Header */
- .header{
-    background-color: #FFFFFF; /* Color de fondo */
-    text-align: center; /* Centra el contenido */
-    position: relative;
-  }
+/* Header */
+.header {
+  background-color: #FFFFFF; /* Color de fondo */
+  text-align: center; /* Centra el contenido */
+  position: relative;
+}
 
- .header img {
-    max-width: 100%; /* Hace que la imagen no se salga del contenedor */
-    height: auto; /* Mantiene la relación de aspecto */
-    margin: 0 auto; /* Centra la imagen horizontalmente */
-    display: block; /* Evita espacios extra en línea */
-  }
+.header img {
+  max-width: 100%; /* Hace que la imagen no se salga del contenedor */
+  height: auto; /* Mantiene la relación de aspecto */
+  margin: 0 auto; /* Centra la imagen horizontalmente */
+  display: block; /* Evita espacios extra en línea */
+}
 
-  /* Footer */
-    .footer {
-    background-color: #FFFFFF; /* Color de fondo */
-    display: flex; /* Alinea los elementos en columna */
-    flex-direction: column; /* Coloca los elementos en columna (título, imágenes, copyright) */
-    align-items: center; /* Centra los elementos horizontalmente */
-    padding: 20px 0; /* Añade espacio arriba y abajo */
-  }
+/* Footer */
+.footer {
+  background-color: #FFFFFF; /* Color de fondo */
+  display: flex; /* Alinea los elementos en columna */
+  flex-direction: column; /* Coloca los elementos en columna (título, imágenes, copyright) */
+  align-items: center; /* Centra los elementos horizontalmente */
+  padding: 20px 0; /* Añade espacio arriba y abajo */
+}
 
-  .footer h4 {
-    font-family: montserrat; /* Fuente del título */
-    text-align: center; /* Centra el texto */
-    margin-top: 0; /* Elimina el margen superior innecesario */
-    margin-bottom: 20px; /* Espacio entre el título y las imágenes */
-  }
+.footer h4 {
+  font-family: montserrat; /* Fuente del título */
+  text-align: center; /* Centra el texto */
+  margin-top: 0; /* Elimina el margen superior innecesario */
+  margin-bottom: 20px; /* Espacio entre el título y las imágenes */
+}
 
+.footer .social-icons {
+  display: flex; /* Alinea las imágenes en una fila */
+  justify-content: center; /* Centra las imágenes */
+  align-items: center; /* Asegura la alineación vertical */
+  gap: 150px; /* Espacio entre las imágenes */
+  flex-wrap: wrap; /* Permite que las imágenes pasen a la siguiente línea si no caben */
+  margin: 0 auto; /* Centrado horizontal */
+  padding: 1rem; /* Espaciado interno opcional */
+}
+
+.footer img {
+  max-width: 50px; /* Ajusta el tamaño de las imágenes */
+  height: auto; /* Mantiene la relación de aspecto */
+  display: block; /* Evita espacios extra en línea */
+  margin: 0; /* Asegura que no haya márgenes adicionales */
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 600px) {
   .footer .social-icons {
-    display: flex; /* Alinea las imágenes en una fila */
-    justify-content: center; /* Centra las imágenes */
-    align-items: center; /* Asegura la alineación vertical */
-    gap: 150px; /* Espacio entre las imágenes */
-    flex-wrap: wrap; /* Permite que las imágenes pasen a la siguiente línea si no caben */
-    margin: 0 auto; /* Centrado horizontal */
-    padding: 1rem; /* Espaciado interno opcional */
+    gap: 7rem; /* Reduce el espacio entre las imágenes */
   }
 
   .footer img {
-      max-width: 50px; /* Ajusta el tamaño de las imágenes */
-      height: auto; /* Mantiene la relación de aspecto */
-      display: block; /* Evita espacios extra en línea */
-      margin: 0; /* Asegura que no haya márgenes adicionales */
+    max-width: 30px; /* Reduce el tamaño de las imágenes */
   }
+}
 
-  /* Estilos para dispositivos móviles */
-  @media (max-width: 600px) {
-      .footer .social-icons {
-          gap: 7rem; /* Reduce el espacio entre las imágenes */
-      }
-
-      .footer img {
-          max-width: 30px; /* Reduce el tamaño de las imágenes */
-      }
-  }
-
-
-  /* Estilo del texto de copyright */
-  .footer-copy {
-    margin-top: 20px; /* Espacio entre las imágenes y el copyright */
-    font-size: 14px; /* Tamaño de fuente */
-    color: #666; /* Color del texto */
-    text-align: center; /* Centra el texto */
-  }
-
-  
-
+/* Estilo del texto de copyright */
+.footer-copy {
+  margin-top: 20px; /* Espacio entre las imágenes y el copyright */
+  font-size: 14px; /* Tamaño de fuente */
+  color: #666; /* Color del texto */
+  text-align: center; /* Centra el texto */
+}
 </style>
