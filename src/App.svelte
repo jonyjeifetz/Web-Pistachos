@@ -42,11 +42,6 @@ import UltimasNoticiasDelPistacho from './components/UltimasNoticiasDelPistacho.
 import ResposabilidadSocialEmpresarial from './components/ResposabilidadSocialEmpresarial.svelte';
 import NuestraGente from './components/NuestraGente.svelte';
 
-let menuVisible = false;
-
-  function toggleMenu() {
-    menuVisible = !menuVisible;
-  }
 </script>
 
 <!-- Codigo HTML -->
@@ -151,7 +146,7 @@ let menuVisible = false;
   }
 
  /* Body */
- body{
+  body{
     background-color:#80A54D; /* Color Pistacho */
     font-family: Arial, sans-serif; /* Fuente básica */
     margin: 0; /* Elimina el margen por defecto del body */
@@ -160,15 +155,14 @@ let menuVisible = false;
     width: 100%; /* Ajusta el ancho al 100% */
   }
 
-
   /* Header */
- .header{
+  .header{
     background-color: #FFFFFF; /* Color de fondo */
     text-align: center; /* Centra el contenido */
     position: relative;
   }
 
- .header img {
+  .header img {
     max-width: 100%; /* Hace que la imagen no se salga del contenedor */
     height: auto; /* Mantiene la relación de aspecto */
     margin: 0 auto; /* Centra la imagen horizontalmente */
@@ -176,7 +170,7 @@ let menuVisible = false;
   }
 
   /* Footer */
-    .footer {
+  .footer {
     background-color: #FFFFFF; /* Color de fondo */
     display: flex; /* Alinea los elementos en columna */
     flex-direction: column; /* Coloca los elementos en columna (título, imágenes, copyright) */
@@ -227,7 +221,5 @@ let menuVisible = false;
     color: #666; /* Color del texto */
     text-align: center; /* Centra el texto */
   }
-
-  
 
 </style>
