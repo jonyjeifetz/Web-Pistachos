@@ -1,7 +1,6 @@
 <!-- Codigo J-S -->
 
 <script>
-
   import { onMount } from "svelte";
 
   onMount(() => {
@@ -11,41 +10,48 @@
   });
 
   window.onload = function() {
-  // Número de teléfono para WhatsApp
-  var phoneNumber = "+5491127161950"; 
-  var prewrittenMessage = "¡Hola! Estoy interesado en saber más sobre los pistachos de La Rioja.";
-  var encodedMessage = encodeURIComponent(prewrittenMessage);
-  var emailAddress = "info@pistachosriojanos.com"; 
-  
-  var instagramLink = document.getElementById("instagram-link");
-  var whatsappLink = document.getElementById("whatsapp-link");
-  var gmailLink = document.getElementById("gmail-link");
-  
-  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  
-  if (isMobile && !/iPad/i.test(navigator.userAgent)) {
-    whatsappLink.href = "https://wa.me/" + phoneNumber + "?text=" + encodedMessage;
-    instagramLink.href = "instagram://user?username=pistachosriojanos";
-    gmailLink.href = "mailto:" + emailAddress + "?subject=Mas Informacion&body=" + encodedMessage;
-  } else {
-    whatsappLink.href = "https://web.whatsapp.com/send?phone=" + phoneNumber + "&text=" + encodedMessage;
-    instagramLink.href = "https://www.instagram.com/pistachosriojanos";
-    gmailLink.href = "https://mail.google.com/mail/?view=cm&fs=1&to=" + emailAddress + "&su=Mas%20Informacion&body=" + encodedMessage;
+    // Número de teléfono para WhatsApp
+    var phoneNumber = "+5491127161950"; 
+    var prewrittenMessage = "¡Hola! Estoy interesado en saber más sobre los pistachos de La Rioja.";
+    var encodedMessage = encodeURIComponent(prewrittenMessage);
+    var emailAddress = "info@pistachosriojanos.com"; 
+
+    var instagramLink = document.getElementById("instagram-link");
+    var whatsappLink = document.getElementById("whatsapp-link");
+    var gmailLink = document.getElementById("gmail-link");
+
+    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (isMobile && !/iPad/i.test(navigator.userAgent)) {
+      whatsappLink.href = "https://wa.me/" + phoneNumber + "?text=" + encodedMessage;
+      instagramLink.href = "instagram://user?username=pistachosriojanos";
+      gmailLink.href = "mailto:" + emailAddress + "?subject=Mas Informacion&body=" + encodedMessage;
+    } else {
+      whatsappLink.href = "https://web.whatsapp.com/send?phone=" + phoneNumber + "&text=" + encodedMessage;
+      instagramLink.href = "https://www.instagram.com/pistachosriojanos";
+      gmailLink.href = "https://mail.google.com/mail/?view=cm&fs=1&to=" + emailAddress + "&su=Mas%20Informacion&body=" + encodedMessage;
+    }
+  };
+
+  import { Router, Route, Link } from 'svelte-routing';
+  import Inicio from './components/Inicio.svelte';
+  import AcercaDeNosotros from './components/AcercaDeNosotros.svelte';
+  import AcercaDelPistacho from './components/AcercaDelPistacho.svelte';
+  import UltimasNoticiasDelPistacho from './components/UltimasNoticiasDelPistacho.svelte';
+  import ResposabilidadSocialEmpresarial from './components/ResposabilidadSocialEmpresarial.svelte';
+  import NuestraGente from './components/NuestraGente.svelte';
+
+  let menuVisible = false;
+
+  // Guardar el estado del menú en localStorage
+  if (localStorage.getItem('menuVisible') === 'true') {
+    menuVisible = true;
   }
-};
 
-import { Router, Route, Link } from 'svelte-routing';
-import Inicio from './components/Inicio.svelte';
-import AcercaDeNosotros from './components/AcercaDeNosotros.svelte';
-import AcercaDelPistacho from './components/AcercaDelPistacho.svelte';
-import UltimasNoticiasDelPistacho from './components/UltimasNoticiasDelPistacho.svelte';
-import ResposabilidadSocialEmpresarial from './components/ResposabilidadSocialEmpresarial.svelte';
-import NuestraGente from './components/NuestraGente.svelte';
-
-let menuVisible = false;
-
+  // Función para alternar el estado del menú
   function toggleMenu() {
     menuVisible = !menuVisible;
+    localStorage.setItem('menuVisible', menuVisible);  // Guardar el estado en localStorage
   }
 </script>
 
@@ -59,12 +65,11 @@ let menuVisible = false;
         src="./images/Logo-Pistachos.png"
         alt="Logo-Pistachos-Riojanos" 
       />
-    </div> 
-    
-     <!-- Botón de menú en dispositivos pequeños -->
-     <button class="menu-btn" on:click={toggleMenu}>
-        ☰
+       <!-- Botón de menú en dispositivos pequeños -->
+      <button class="menu-btn" on:click={toggleMenu}>
+      ☰
       </button>
+    </div>     
 
     <Router>
       <!-- Menú de navegación -->
@@ -113,7 +118,6 @@ let menuVisible = false;
 <!-- Codigo CSS -->
 
 <style>
-
 /* Menú horizontal */
 nav {
   background-color: rgb(0, 0, 0); /* Fondo negro */
@@ -283,5 +287,4 @@ body {
   color: #666; /* Color del texto */
   text-align: center; /* Centra el texto */
 }
-
 </style>
