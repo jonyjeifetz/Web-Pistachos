@@ -36,25 +36,15 @@
       `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}&su=Mas%20Informacion&body=${encodedMessage}`;
   });
 
-  // Función para abrir y cerrar el menú
-  function toggleMenu() {
+   // Función para abrir y cerrar el menú
+   function toggleMenu() {
     const menu = document.querySelector('.menu');
     if (menu) {
-      menu.classList.toggle('active'); // Cambié 'open' por 'active' según el CSS
+      menu.classList.toggle('active');
     }
   }
 
   onMount(() => {
-    const menuButton = document.querySelector('.menu-button');
-    if (menuButton) {
-      menuButton.addEventListener('click', toggleMenu);
-    }
-
-    const closeBtn = document.querySelector('.close-btn');
-    if (closeBtn) {
-      closeBtn.addEventListener('click', toggleMenu);
-    }
-
     const menuLinks = document.querySelectorAll('.menu ul li a');
     menuLinks.forEach(link => {
       link.addEventListener('click', () => {
@@ -80,14 +70,15 @@
         <!-- Botón de cerrar (X) -->
         <button class="close-btn" on:click={toggleMenu}>X</button>
         <ul class="menu-list">
-          <li class="menu-item"><a Inicio href="#" on:click="{() => window.location.reload()}">Inicio</a></li>
-          <li class="menu-item"><Link to="/acerca-de-nosotros" on:click={toggleMenu}><a>Acerca de Nosotros</a></Link></li>
-          <li class="menu-item"><Link to="/acerca-del-pistacho" on:click={toggleMenu}><a>Acerca del Pistacho</a></Link></li>
-          <li class="menu-item"><Link to="/ultimas-noticias-del-pistacho" on:click={toggleMenu}><a>Ultimas Noticias del Pistacho</a></Link></li>
-          <li class="menu-item"><Link to="/responsabilidad-social-empresarial" on:click={toggleMenu}><a>Responsabilidad Social Empresarial</a></Link></li>
-          <li class="menu-item"><Link to="/nuestra-gente" on:click={toggleMenu}><a>Nuestra Gente</a></Link></li>
+          <li class="menu-item"><a href="#">Inicio</a></li>
+          <li class="menu-item"><a href="#">Acerca de Nosotros</a></li>
+          <li class="menu-item"><a href="#">Acerca del Pistacho</a></li>
+          <li class="menu-item"><a href="#">Últimas Noticias del Pistacho</a></li>
+          <li class="menu-item"><a href="#">Responsabilidad Social Empresarial</a></li>
+          <li class="menu-item"><a href="#">Nuestra Gente</a></li>
         </ul>
       </nav>
+
       
       <!-- Menú horizontal -->
       <nav class="menu-horizontal">
@@ -215,9 +206,22 @@ nav ul li a:hover {
 
 /* Menú en dispositivos móviles */
 @media (max-width: 600px) {
-  .footer .social-icons {
-    gap: 7rem;
+  .menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    text-align: center;
+    padding-top: 20px;
+    z-index: 1000; /* Asegura que el menú esté por encima de otros elementos */
   }
+
+  .menu.active {
+    display: block;
+  }
+}
 
   .footer img {
     max-width: 30px;
