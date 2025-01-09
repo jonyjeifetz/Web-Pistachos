@@ -285,7 +285,7 @@ nav ul li a:hover {
   .menu-horizontal {
     display: none;  /* Aseguramos que no se muestre en dispositivos pequeños */
   }
-}
+
 
 @media (min-width: 601px) {
   /* Mostrar el menú horizontal solo en pantallas grandes */
