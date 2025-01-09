@@ -42,6 +42,12 @@ import UltimasNoticiasDelPistacho from './components/UltimasNoticiasDelPistacho.
 import ResposabilidadSocialEmpresarial from './components/ResposabilidadSocialEmpresarial.svelte';
 import NuestraGente from './components/NuestraGente.svelte';
 
+let menuAbierto = false;
+
+  const toggleMenu = () => {
+    menuAbierto = !menuAbierto;
+  };
+
 </script>
 
 <!-- Codigo HTML -->
@@ -57,18 +63,35 @@ import NuestraGente from './components/NuestraGente.svelte';
     </div>  
     
     <Router>
-      <!-- Menú de navegación -->
-      <nav>
-        <ul>
-          <li><a href="#" on:click="{() => window.location.reload()}">Inicio</a></li>
-          <li><Link to="/acerca-de-nosotros"><a href="/acerca-de-nosotros">Acerca de Nosotros</a></Link></li>
-          <li style="color: #FFFFF;"><Link to="/acerca-del-pistacho"><a href="/acerca-del-pistacho">Acerca del Pistacho</a></Link></li>
-          <li><Link to="/ultimas-noticias-del-pistacho"><a href="/ultimas-noticias-del-pistacho">Ultimas Noticias del Pistacho</a></Link></li>
-          <li><Link to="/responsabilidad-social-empresarial"><a href="/responsabilidad-social-empresarial">Responsabilidad Social Empresarial</a></Link></li>
-          <li><Link to="/nuestra-gente"><a href="/nuestra-gente">Nuestra Gente</a></Link></li>
+      <!-- Botón para menú desplegable (móviles) -->
+      <button class="menu-button" on:click={toggleMenu}>
+        ☰ Menú
+      </button>
+
+      <!-- Menú desplegable (solo móviles) -->
+      {#if menuAbierto}
+        <nav class="menu">
+          <ul class="menu-list">
+            <li class="menu-item"><a href="#" on:click="{() => window.location.reload()}">Inicio</a></li>
+            <li class="menu-item"><Link class="menu-link" to="/acerca-de-nosotros"><a href="/acerca-de-nosotros">Acerca de Nosotros</a></Link></li>
+            <li class="menu-item"><Link class="menu-link" to="/acerca-del-pistacho"><a href="/acerca-del-pistacho">Acerca del Pistacho</a></Link></li>
+            <li class="menu-item"><Link class="menu-link" to="/ultimas-noticias-del-pistacho"><a href="/ultimas-noticias-del-pistacho">Ultimas Noticias del Pistacho</a></Link></li>
+            <li class="menu-item"><Link class="menu-link" to="/responsabilidad-social-empresarial"><a href="/responsabilidad-social-empresarial">Responsabilidad Social Empresarial</a></Link></li>
+            <li class="menu-item"><Link class="menu-link" to="/nuestra-gente"><a href="/nuestra-gente">Nuestra Gente</a></Link></li>
+          </ul>
+        </nav>
+      {/if}
+      <!-- Menú horizontal (solo escritorio) -->
+      <nav class="menu-horizontal">
+        <ul class="menu-list1">
+          <li class="menu-item"><a href="#" on:click="{() => window.location.reload()}">Inicio</a></li>
+          <li class="menu-item"><Link class="menu-link" to="/acerca-de-nosotros"><a href="/acerca-de-nosotros">Acerca de Nosotros</a></Link></li>
+          <li class="menu-item"><Link class="menu-link" to="/acerca-del-pistacho"><a href="/acerca-del-pistacho">Acerca del Pistacho</a></Link></li>
+          <li class="menu-item"><Link class="menu-link" to="/ultimas-noticias-del-pistacho"><a href="/ultimas-noticias-del-pistacho">Ultimas Noticias del Pistacho</a></Link></li>
+          <li class="menu-item"><Link class="menu-link" to="/responsabilidad-social-empresarial"><a href="/responsabilidad-social-empresarial">Responsabilidad Social Empresarial</a></Link></li>
+          <li class="menu-item"><Link class="menu-link" to="/nuestra-gente"><a href="/nuestra-gente">Nuestra Gente</a></Link></li>
         </ul>
       </nav>
-    
       <!-- Las rutas definidas -->
       <Route path="/" component={Inicio} />
       <Route path="/acerca-de-nosotros" component={AcercaDeNosotros} />
@@ -221,5 +244,100 @@ import NuestraGente from './components/NuestraGente.svelte';
     color: #666; /* Color del texto */
     text-align: center; /* Centra el texto */
   }
+
+  /* PRUEBAS DE MENU CON BOTON */
+
+/* Asegurarse de que el contenedor del menú sea un contenedor de bloque */
+.menu-horizontal .menu-list1 {
+  display: flex;             /* Establece un contenedor flexible */
+  justify-content: center;   /* Centra los elementos horizontalmente */
+  align-items: center;       /* Centra los elementos verticalmente (si es necesario) */
+  padding: 0;                /* Elimina el relleno predeterminado */
+  margin: 0;                 /* Elimina el margen predeterminado */
+  list-style: none;          /* Elimina los puntos de lista predeterminados */
+  left: -80%;
+}
+
+.menu-horizontal .menu-list1 .menu-item {
+  margin: 0 15px;            /* Espacio entre los elementos del menú */
+}
+
+/* Corregir el color de la sección "Inicio" */
+.menu-horizontal .menu-list1 .menu-item:first-child a {
+  color: #FFFFFF; /* Blanco para la sección "Inicio" */
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.menu-horizontal .menu-list1 .menu-item:first-child a:hover {
+  font-weight: bold; /* Poner en negrita al pasar el mouse */
+}
+
+/* Corregir el color de los enlaces en el resto del menú */
+.menu-horizontal .menu-list1 .menu-item a {
+  color: #FFFFFF; /* Color blanco para todos los enlaces */
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.menu-horizontal .menu-list1 .menu-item a:hover {
+  font-weight: bold; /* Poner en negrita al pasar el mouse */
+}
+
+/* Corregir el color de la sección "Inicio" para la primera lista también */
+.menu .menu-list .menu-item:first-child a {
+  color: #FFFFFF; /* Blanco para la sección "Inicio" */
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.menu .menu-list .menu-item:first-child a:hover {
+  font-weight: bold; /* Poner en negrita al pasar el mouse */
+}
+
+/* Corregir el color de los enlaces en el resto del menú */
+.menu .menu-list .menu-item a {
+  color: #FFFFFF; /* Color blanco para todos los enlaces */
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.menu .menu-list .menu-item a:hover {
+  font-weight: bold; /* Poner en negrita al pasar el mouse */
+}
+
+
+
+  /* Media query: dispositivos móviles (≤ 768px) */
+@media screen and (max-width: 768px) {
+  .menu-button {
+    display: block; /* Mostrar el botón para menú desplegable */
+  }
+
+  .menu {
+    display: block; /* Mostrar el menú desplegable */
+  }
+
+  .menu-horizontal {
+    display: none; /* Ocultar el menú horizontal */
+  }
+}
+
+/* Media query: dispositivos grandes (> 768px) */
+@media screen and (min-width: 769px) {
+  .menu-button {
+    display: none; /* Ocultar el botón para menú desplegable */
+  }
+
+  .menu {
+    display: none; /* Ocultar el menú desplegable */
+  }
+
+  .menu-horizontal {
+    display: flex; /* Mostrar el menú horizontal */
+  }
+}
+
+
 
 </style>
