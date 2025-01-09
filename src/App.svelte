@@ -1,6 +1,15 @@
 <!-- Codigo J-S -->
 
 <script>
+
+  import { onMount } from "svelte";
+
+  onMount(() => {
+    if (window.location.pathname !== "/") {
+      window.location.href = "/";
+    }
+  });
+
   window.onload = function() {
   // Número de teléfono para WhatsApp
   var phoneNumber = "+5491127161950"; 
@@ -32,6 +41,12 @@ import AcercaDelPistacho from './components/AcercaDelPistacho.svelte';
 import UltimasNoticiasDelPistacho from './components/UltimasNoticiasDelPistacho.svelte';
 import ResposabilidadSocialEmpresarial from './components/ResposabilidadSocialEmpresarial.svelte';
 import NuestraGente from './components/NuestraGente.svelte';
+
+let menuVisible = false;
+
+  function toggleMenu() {
+    menuVisible = !menuVisible;
+  }
 </script>
 
 <!-- Codigo HTML -->
@@ -39,18 +54,22 @@ import NuestraGente from './components/NuestraGente.svelte';
 <body>
   <main>
     <!-- Header -->
-    <div class="header">
+    <div class="header"> 
       <img
         src="./images/Logo-Pistachos.png"
-        alt="Logo-Pistachos-Riojanos"
+        alt="Logo-Pistachos-Riojanos" 
       />
+       <!-- Botón de menú en dispositivos pequeños -->
+      <button class="menu-btn" on:click={toggleMenu}>
+      ☰
+      </button>
     </div>     
 
     <Router>
       <!-- Menú de navegación -->
       <nav>
         <ul>
-          <li><Link to="/"><a href="/">Inicio</a></Link></li>
+          <li><a href="#" on:click="{() => window.location.reload()}">Inicio</a></li>
           <li><Link to="/acerca-de-nosotros"><a href="/acerca-de-nosotros">Acerca de Nosotros</a></Link></li>
           <li style="color: #FFFFF;"><Link to="/acerca-del-pistacho"><a href="/acerca-del-pistacho">Acerca del Pistacho</a></Link></li>
           <li><Link to="/ultimas-noticias-del-pistacho"><a href="/ultimas-noticias-del-pistacho">Ultimas Noticias del Pistacho</a></Link></li>
@@ -135,6 +154,39 @@ import NuestraGente from './components/NuestraGente.svelte';
     text-decoration: underline; /* Subrayado al pasar el ratón */
   }
 
+  /* Botón de menú para móviles */
+.menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.menu {
+  display: flex;
+}
+
+.menu.visible {
+  display: block;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 600px) {
+  nav ul {
+    display: none; /* Oculta el menú horizontal en móviles */
+    flex-direction: column; /* El menú se muestra en columna */
+  }
+
+  .menu-btn {
+    display: block; /* Muestra el botón de menú */
+  }
+
+  .menu.visible ul {
+    display: block; /* Muestra el menú cuando se activa */
+  }
+}
  /* Body */
  body{
     background-color:#80A54D; /* Color Pistacho */

@@ -1,9 +1,12 @@
 {
-    "rewrites": [
-      {
-        "source": "/(.*)",
-        "destination": "/maintenance.html"
-      }
-    ]
-  }
-  
+  "rewrites": [
+    {
+      "source": "/maintenance.html",
+      "destination": "/maintenance.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

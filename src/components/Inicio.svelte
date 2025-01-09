@@ -1,7 +1,9 @@
+
 <!-- Mapa -->
 <h1>De La Rioja al mundo: nuestro alcance</h1>
-<div class="flourish-embed flourish-map" data-src="visualisation/20858873"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20858873/thumbnail" width="100%" alt="map visualization" /></noscript></div>
-<br>
+<div id="flourish-container">
+  <div class="flourish-embed flourish-map" data-src="visualisation/20858873"></div>
+</div>
 
 <!-- Recetas -->
 <h1>De La Rioja a Tu Mesa: Recetas Creativas con Pistacho</h1>
