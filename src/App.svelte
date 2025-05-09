@@ -1,3 +1,4 @@
+<!-- Codigo J-S -->
 <script>
   import { onMount } from "svelte";
   import { Router, Route, Link } from 'svelte-routing';
@@ -8,11 +9,12 @@
   import ResposabilidadSocialEmpresarial from './components/ResposabilidadSocialEmpresarial.svelte';
   import NuestraGente from './components/NuestraGente.svelte';
 
+  // Redirige a la página de inicio si no es la página principal
   onMount(() => {
     if (window.location.pathname !== "/") {
       window.location.href = "/";
     }
-    
+
     // Establecer enlaces de WhatsApp, Instagram y Gmail según el dispositivo
     const phoneNumber = "+5491127161950"; 
     const prewrittenMessage = "¡Hola! Estoy interesado en saber más sobre los pistachos de La Rioja.";
@@ -34,9 +36,12 @@
       `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}&su=Mas%20Informacion&body=${encodedMessage}`;
   });
 
-  function toggleMenu() {
+   // Función para abrir y cerrar el menú
+   function toggleMenu() {
     const menu = document.querySelector('.menu');
-    menu.classList.toggle('active');
+    if (menu) {
+      menu.classList.toggle('active');
+    }
   }
 
   onMount(() => {
@@ -49,38 +54,40 @@
   });
 </script>
 
+<!-- Codigo HTML -->
 <body>
   <main>
+    <!-- Header -->
     <div class="header"> 
       <img src="./images/Logo-Pistachos.png" alt="Logo-Pistachos-Riojanos" />
     </div>  
 
     <Router>
-      <!-- Botón para menú desplegable en móviles -->
+      <!-- Botón para menú desplegable (móviles) -->
       <button class="menu-button" on:click={toggleMenu}>☰ Menú</button>
 
-      <!-- Menú desplegable -->
       <nav class="menu">
+        <!-- Botón de cerrar (X) -->
         <button class="close-btn" on:click={toggleMenu}>X</button>
-        <ul>
-          <li><a href="#">Inicio</a></li>
-          <li><a href="#">Acerca de Nosotros</a></li>
-          <li><a href="#">Acerca del Pistacho</a></li>
-          <li><a href="#">Últimas Noticias del Pistacho</a></li>
-          <li><a href="#">Responsabilidad Social Empresarial</a></li>
-          <li><a href="#">Nuestra Gente</a></li>
+        <ul class="menu-list">
+          <li class="menu-item"><a href="#">Inicio</a></li>
+          <li class="menu-item"><a href="#">Acerca de Nosotros</a></li>
+          <li class="menu-item"><a href="#">Acerca del Pistacho</a></li>
+          <li class="menu-item"><a href="#">Últimas Noticias del Pistacho</a></li>
+          <li class="menu-item"><a href="#">Responsabilidad Social Empresarial</a></li>
+          <li class="menu-item"><a href="#">Nuestra Gente</a></li>
         </ul>
       </nav>
 
-      <!-- Menú horizontal para pantallas grandes -->
+      <!-- Menú horizontal -->
       <nav class="menu-horizontal">
-        <ul>
-          <li><Link to="/">Inicio</Link></li>
-          <li><Link to="/acerca-de-nosotros">Acerca de Nosotros</Link></li>
-          <li><Link to="/acerca-del-pistacho">Acerca del Pistacho</Link></li>
-          <li><Link to="/ultimas-noticias-del-pistacho">Últimas Noticias del Pistacho</Link></li>
-          <li><Link to="/responsabilidad-social-empresarial">Responsabilidad Social Empresarial</Link></li>
-          <li><Link to="/nuestra-gente">Nuestra Gente</Link></li>
+        <ul class="menu-list1">
+          <li class="menu-item"><a href="#" on:click="{() => window.location.reload()}">Inicio</a></li>
+          <li class="menu-item"><Link to="/acerca-de-nosotros"><a>Acerca de Nosotros</a></Link></li>
+          <li class="menu-item"><Link to="/acerca-del-pistacho"><a>Acerca del Pistacho</a></Link></li>
+          <li class="menu-item"><Link to="/ultimas-noticias-del-pistacho"><a>Ultimas Noticias del Pistacho</a></Link></li>
+          <li class="menu-item"><Link to="/responsabilidad-social-empresarial"><a>Responsabilidad Social Empresarial</a></Link></li>
+          <li class="menu-item"><Link to="/nuestra-gente"><a>Nuestra Gente</a></Link></li>
         </ul>
       </nav>
 
@@ -108,6 +115,7 @@
   </main>
 </body>
 
+<!-- Codigo CSS -->
 <style>
 /* Estilos generales */
 body {
@@ -132,6 +140,7 @@ body {
   margin: 0 auto;
 }
 
+/* Estilo general para el footer */
 .footer {
   background-color: #FFFFFF;
   display: flex;
@@ -149,7 +158,7 @@ body {
 .footer .social-icons {
   display: flex;
   justify-content: center;
-  gap: 50px; /* Espacio entre iconos */
+  gap: 150px; /* Este es el espacio que quieres en las computadoras */
   flex-wrap: wrap;
   padding: 1rem;
 }
@@ -166,12 +175,30 @@ body {
   text-align: center;
 }
 
+/* Ajustes para dispositivos móviles */
+@media (max-width: 600px) {
+  .footer .social-icons {
+    justify-content: center;  /* Centrado para móviles */
+    gap: 100px;  /* Reducido el espacio entre los iconos en móviles */
+  }
+
+  .footer img {
+    max-width: 40px;  /* Reducido el tamaño de los iconos en móviles */
+  }
+
+  /* Asegura que el título esté centrado en móviles */
+  .footer h4 {
+    text-align: center;
+  }
+}
+
 /* Estilos para el menú */
 nav {
   background-color: rgb(0, 0, 0);
   padding: 10px;
 }
 
+/* Menú por defecto, oculto en dispositivos pequeños */
 nav ul {
   list-style-type: none;
   padding: 0;
@@ -205,7 +232,7 @@ nav ul li a:hover {
     background-color: #333;
     text-align: center;
     padding-top: 20px;
-    z-index: 1000;
+    z-index: 1000; /* Asegura que el menú esté por encima de otros elementos */
   }
 
   .menu.active {
@@ -222,13 +249,13 @@ nav ul li a:hover {
   }
 
   .menu ul li a {
-    color: white;
+    color: white; /* Asegura que el texto sea blanco y visible */
     font-size: 20px;
     text-decoration: none;
   }
 
   .menu ul li a:hover {
-    color: #FFD700;
+    color: #FFD700; /* Cambio de color al pasar el mouse */
     text-decoration: underline;
   }
 
@@ -250,12 +277,23 @@ nav ul li a:hover {
     cursor: pointer;
   }
 
+  /* Mostrar el menú horizontal solo en dispositivos grandes */
   .menu-horizontal {
-    display: none;  /* No mostrar el menú horizontal en pantallas pequeñas */
+    display: none;  /* Aseguramos que no se muestre en dispositivos pequeños */
+  }
+
+  .menu-list1 {
+    display: flex;
+  }
+
+  /* Aseguramos que el menú desplegable no se muestre en pantallas grandes */
+  .menu {
+    display: none;
   }
 }
 
 @media (min-width: 601px) {
+  /* Mostrar el menú horizontal solo en pantallas grandes */
   .menu-horizontal {
     display: flex;
     justify-content: space-around;
@@ -265,8 +303,13 @@ nav ul li a:hover {
     display: none;
   }
 
+  .menu-list1 {
+    display: flex;
+  }
+
+  /* Aseguramos que el menú desplegable no se muestre en pantallas grandes */
   .menu {
-    display: none;  /* No mostrar el menú desplegable en pantallas grandes */
+    display: none;
   }
 }
 </style>
