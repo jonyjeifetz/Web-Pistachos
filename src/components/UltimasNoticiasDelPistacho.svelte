@@ -1,5 +1,8 @@
 <div class="cuerpo">
     <h1 style="font-family: montserrat;">Ultimas Noticias del Pistacho</h1>
+    <br>
+    <br>
+    <h3 style="font-family: montserrat;">Proximamente!</h3>
 </div>
 
 <style>
