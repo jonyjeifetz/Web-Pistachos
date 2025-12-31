@@ -193,9 +193,46 @@
     .menu-mobile { display: none; }
   }
 
+ /* --- FOOTER --- */
   .footer { 
     background-color: #FFFFFF; 
-    text-align: center;
-    padding: 40px 0;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    padding: 60px 0; /* Aumentamos el aire arriba y abajo */
+    margin: 0;
+  }
+  
+  .footer .social-icons { 
+    display: flex; 
+    gap: 80px; /* <--- Aumentamos la separación entre los logos en Desktop */
+    padding: 20px; 
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .footer img { 
+    width: 50px; /* Definimos un ancho fijo para que todos se vean iguales */
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+
+  .footer img:hover {
+    transform: scale(1.1); /* Efecto sutil al pasar el mouse */
+  }
+
+  /* --- RESPONSIVE FOOTER --- */
+  @media (max-width: 768px) {
+    .footer {
+      padding: 40px 20px;
+    }
+
+    .footer .social-icons {
+      gap: 50px; /* <--- Separación generosa para móviles para evitar clics accidentales */
+    }
+
+    .footer img {
+      width: 45px; /* Un poquito más chicos en móvil */
+    }
   }
 </style>
