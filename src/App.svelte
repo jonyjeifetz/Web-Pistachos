@@ -1,4 +1,5 @@
 <script>
+  /* --- (Mantenemos tu lógica de script intacta) --- */
   import { onMount } from "svelte";
   import { Router, Route, Link } from 'svelte-routing';
   import { slide } from 'svelte/transition';
@@ -49,7 +50,7 @@
   <Router>
     <nav class="nav-container">
       <button 
-        class="menu-button {menuAbierto ? 'menu-abierto-negro' : ''}" 
+        class="menu-button {menuAbierto ? 'btn-negro' : 'btn-verde'}" 
         on:click={toggleMenu}
       >
         {menuAbierto ? '✕ Cerrar' : '☰ Menú'}
@@ -106,55 +107,38 @@
 <style>
   /* --- BASE --- */
   :global(body) {
-    background-color: #FFFFFF; /* Fondo global blanco para que lo que sobre abajo sea blanco */
+    background-color: #FFFFFF;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
   }
 
+  main { display: flex; flex-direction: column; }
+
   .header {
     background-color: #FFFFFF;
     padding: 20px 0;
     text-align: center;
-    display: block;
   }
 
-  .header a {
-    display: inline-block;
-    text-decoration: none;
-  }
-  
-  .nav-container {
-    position: relative;
-    z-index: 1000;
-  }
-
-  /* --- CONTENIDO VERDE --- */
-  .content {
-    background-color: #80A54D; 
-    min-height: 50vh; /* Ajustado para que el verde ocupe buen espacio */
-    margin: 0; 
-    padding: 1px 0 0 0; /* El pixel superior evita el espacio blanco entre negro y verde */
-  }
-
-  /* --- MENU DESKTOP --- */
+  /* --- MENU DESKTOP (IMAGEN 2) --- */
   .menu-horizontal {
-    display: none;
-    background-color: #000; 
+    display: none; /* Se activa en el media query */
+    background-color: #000; /* Siempre negro en PC */
     padding: 25px 0;
-    margin: 0; /* Elimina cualquier separación con el contenido verde */
+    margin: 0;
   }
 
   .menu-list-horizontal {
     display: flex;
     list-style: none;
     margin: 0 auto;
-    padding: 0 20px;
-    justify-content: space-between;
-    align-items: center;
     width: 95%;
     max-width: 1500px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
   }
 
   :global(.menu-list-horizontal a), .menu-list-horizontal li a {
@@ -163,21 +147,12 @@
     font-size: 18px;
     font-weight: bold;
     text-transform: uppercase;
-    transition: all 0.3s ease;
-    white-space: nowrap; 
-    padding: 5px 10px;
   }
 
-  :global(.menu-list-horizontal a:hover), .menu-list-horizontal li a:hover {
-    color: #80A54D;
-    transform: scale(1.05);
-  }
-
-  /* --- MENU MÓVIL --- */
+  /* --- MENU MÓVIL DINÁMICO --- */
   .menu-button {
     display: block;
     width: 100%;
-    background: #000; /* Fondo negro para evitar saltos de color */
     color: white;
     border: none;
     padding: 20px;
@@ -187,10 +162,12 @@
     text-align: left;
   }
 
+  .btn-verde { background-color: #80A54D; } /* Estado cerrado: Verde */
+  .btn-negro { background-color: #000; }   /* Estado abierto: Negro */
+
   .menu-mobile {
     background-color: #000;
     width: 100%;
-    margin: 0;
   }
 
   :global(.menu-list-vertical a), .menu-list-vertical li a {
@@ -198,63 +175,27 @@
     color: white;
     padding: 20px;
     text-decoration: none;
-    font-size: 1.1rem;
     border-bottom: 1px solid #222;
   }
 
-  /* --- RESPONSIVE / BREAKPOINT --- */
-  @media (min-width: 1150px) {
-    .menu-button {
-      display: none;
-    }
-    .menu-horizontal {
-      display: flex;
-    }
-    .menu-mobile {
-      display: none;
-    }
+  /* --- CONTENT --- */
+  .content {
+    background-color: #80A54D;
+    margin: 0;
+    display: flow-root; /* Evita el espacio blanco */
+    min-height: 50vh;
   }
 
-  /* --- FOOTER --- */
+  /* --- RESPONSIVE --- */
+  @media (min-width: 1150px) {
+    .menu-button { display: none; }
+    .menu-horizontal { display: flex; } /* Aparece el menú negro de PC */
+    .menu-mobile { display: none; }
+  }
+
   .footer { 
     background-color: #FFFFFF; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    padding: 40px 0; 
-    margin: 0;
-  }
-  
-  .footer .social-icons { 
-    display: flex; 
-    gap: 40px; 
-    padding: 1rem; 
-  }
-  
-  .footer img { 
-    max-width: 45px; 
-  }
-
-  @media (max-width: 768px) {
-    .footer {
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .footer h4 {
-      margin: 0 0 25px 0;
-      width: 100%;
-      line-height: 1.2;
-    }
-
-    .footer .social-icons {
-      gap: 60px;
-      padding: 20px 0;
-      justify-content: center;
-    }
-
-    .footer img {
-      max-width: 55px;
-    }
+    text-align: center;
+    padding: 40px 0;
   }
 </style>
