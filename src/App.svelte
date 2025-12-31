@@ -202,7 +202,7 @@
     }
   }
 
-  /* --- FOOTER --- */
+/* --- FOOTER --- */
   .footer { 
     background-color: #FFFFFF; 
     display: flex; 
@@ -210,6 +210,38 @@
     align-items: center; 
     padding: 40px 0; 
   }
-  .footer .social-icons { display: flex; gap: 40px; padding: 1rem; }
-  .footer img { max-width: 45px; }
+  
+  .footer .social-icons { 
+    display: flex; 
+    gap: 40px; 
+    padding: 1rem; 
+  }
+  
+  .footer img { 
+    max-width: 45px; 
+  }
+
+  /* Ajustes específicos solo para celulares */
+  @media (max-width: 768px) {
+    .footer {
+      padding: 40px 20px; /* Evita que el texto toque los bordes */
+      text-align: center;   /* Centra el h4 y el p */
+    }
+
+    .footer h4 {
+      margin: 0 0 25px 0;  /* Separa el título de los iconos */
+      width: 100%;
+      line-height: 1.4;    /* Mejora la lectura si el texto se divide en dos líneas */
+    }
+
+    .footer .social-icons {
+      gap: 60px;           /* Los separamos más en móvil para que queden "más lindos" */
+      padding: 20px 0;
+      justify-content: center;
+    }
+
+    .footer img {
+      max-width: 55px;     /* Los hacemos un poquito más grandes para que sean fáciles de tocar */
+    }
+  }
 </style>
