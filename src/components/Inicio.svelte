@@ -1,53 +1,99 @@
+<script>
+  import { onMount } from "svelte";
 
-<!-- Mapa -->
+  let recetasContainer;
+  let scrollInterval;
+
+  onMount(() => {
+    // Lógica para que el scroll se pase solo
+    const startAutoScroll = () => {
+      scrollInterval = setInterval(() => {
+        if (recetasContainer) {
+          recetasContainer.scrollLeft += 1; 
+          // Si llega a la mitad (final de la primera tanda), vuelve al inicio
+          if (recetasContainer.scrollLeft >= recetasContainer.scrollWidth / 2) {
+            recetasContainer.scrollLeft = 0;
+          }
+        }
+      }, 30); // Velocidad del movimiento
+    };
+
+    // Lógica para que en móviles la receta del centro active el nombre y botón
+    const handleMobileScroll = () => {
+      const items = document.querySelectorAll('.receta');
+      const centerX = window.innerWidth / 2;
+
+      items.forEach(item => {
+        const rect = item.getBoundingClientRect();
+        // Si el centro de la receta está en el centro de la pantalla
+        if (rect.left < centerX && rect.right > centerX) {
+          item.classList.add('active-center');
+        } else {
+          item.classList.remove('active-center');
+        }
+      });
+    };
+
+    startAutoScroll();
+    recetasContainer.addEventListener('scroll', handleMobileScroll);
+
+    // Pausas al interactuar
+    const stopScroll = () => clearInterval(scrollInterval);
+    const resumeScroll = () => startAutoScroll();
+
+    recetasContainer.addEventListener('mouseenter', stopScroll);
+    recetasContainer.addEventListener('mouseleave', resumeScroll);
+    recetasContainer.addEventListener('touchstart', stopScroll);
+    recetasContainer.addEventListener('touchend', resumeScroll);
+
+    return () => clearInterval(scrollInterval);
+  });
+</script>
+
 <h1>De La Rioja al mundo: nuestro alcance</h1>
 <div id="flourish-container">
   <div class="flourish-embed flourish-map" data-src="visualisation/20858873"></div>
 </div>
 
-<!-- Recetas -->
 <h1>De La Rioja a Tu Mesa: Recetas Creativas con Pistacho</h1>
-<div class="recetas-container">
+<div class="recetas-container" bind:this={recetasContainer}>
   <div class="recetas">
-    <!-- Receta 1 -->
-    <div class="receta">
-      <img src="./images/Brownie de Pistacho.jpeg" alt="Brownie de Pistacho" />
-      <div class="hover-text">Brownie de Pistacho</div>
-      <a href="./Recetas/Receta Brownie de Pistacho.pdf" target="_blank" class="btn-ver-receta">Ver receta</a>
-    </div>
-    <!-- Receta 2 -->
-    <div class="receta">
-      <img src="./images/Baklava.jpeg" alt="Baklava" />
-      <div class="hover-text">Baklava de Pistacho</div>
-      <a href="./Recetas/Receta Baklava de Pistacho.pdf" target="_blank" class="btn-ver-receta">Ver receta</a>
-    </div>
-    <!-- Receta 3 -->
-    <div class="receta">
-      <img src="./images/Queso.jpeg" alt="Queso" />
-      <div class="hover-text">Queso con Pistacho</div>
-      <a href="./Recetas/Receta Queso de Pistacho.pdf" target="_blank" class="btn-ver-receta">Ver receta</a>
-    </div>
-    <!-- Receta 4 -->
-    <div class="receta">
-      <img src="./images/Crema de Pistacho.jpeg" alt="Crema de Pistacho" />
-      <div class="hover-text">Crema de Pistacho</div>
-      <a href="./Recetas/Receta Crema Pistacho.pdf" target="_blank" class="btn-ver-receta" >Ver receta</a>
-    </div>
-    <!-- Receta 5 -->
-    <div class="receta">
-      <img src="./images/Trufas.jpeg" alt="Trufas de Pistacho" />
-      <div class="hover-text">Trufas de Pistacho, Palta y Chocolate</div>
-      <a href="./Recetas/Receta Trufas de Pistacho, Palta y Chocolate.pdf" target="_blank" class="btn-ver-receta">Ver receta</a>
-    </div> 
+    {#each [1, 2] as loop}
+      <div class="receta">
+        <img src="./images/Brownie de Pistacho.jpeg" alt="Brownie de Pistacho" />
+        <div class="hover-text">Brownie de Pistacho</div>
+        <a href="./Recetas/Receta Brownie de Pistacho.pdf" target="_blank" class="btn-ver-receta">Ver receta</a>
+      </div>
+      <div class="receta">
+        <img src="./images/Baklava.jpeg" alt="Baklava" />
+        <div class="hover-text">Baklava de Pistacho</div>
+        <a href="./Recetas/Receta Baklava de Pistacho.pdf" target="_blank" class="btn-ver-receta">Ver receta</a>
+      </div>
+      <div class="receta">
+        <img src="./images/Queso.jpeg" alt="Queso" />
+        <div class="hover-text">Queso con Pistacho</div>
+        <a href="./Recetas/Receta Queso de Pistacho.pdf" target="_blank" class="btn-ver-receta">Ver receta</a>
+      </div>
+      <div class="receta">
+        <img src="./images/Crema de Pistacho.jpeg" alt="Crema de Pistacho" />
+        <div class="hover-text">Crema de Pistacho</div>
+        <a href="./Recetas/Receta Crema Pistacho.pdf" target="_blank" class="btn-ver-receta" >Ver receta</a>
+      </div>
+      <div class="receta">
+        <img src="./images/Trufas.jpeg" alt="Trufas de Pistacho" />
+        <div class="hover-text">Trufas de Pistacho, Palta y Chocolate</div>
+        <a href="./Recetas/Receta Trufas de Pistacho, Palta y Chocolate.pdf" target="_blank" class="btn-ver-receta">Ver receta</a>
+      </div>
+    {/each}
   </div>
 </div>
 
 <style>
-
-    h1, h3 {
+    h1 {
         font-family: montserrat;
         color: #FFFFFF;
         text-align: center;
+        margin-top: 40px;
     }
 
     /* Recetas */
@@ -55,7 +101,7 @@
       display: flex;
       justify-content: flex-start;
       width: 100%;
-      padding: 20px;
+      padding: 40px 0;
       margin-bottom: 20px;
       overflow-x: auto;
       scrollbar-width: none;
@@ -70,56 +116,61 @@
       gap: 20px;
       width: max-content;
       flex-wrap: nowrap;
+      padding: 0 20px;
   }
 
   .receta {
       position: relative;
-      width: 300px;  /* Tamaño base para pantallas grandes */
+      width: 300px;
       height: 400px;
       text-align: center;
       flex-shrink: 0;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.3s ease;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.4s ease;
+      overflow: hidden;
+      border-radius: 10px;
   }
 
-  /* Ajuste de tamaño de imagen */
   .receta img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.3s ease;
-      border-radius: 10px;
+      transition: all 0.4s ease;
   }
 
-  /* Efecto hover para dispositivos con mouse */
-  .receta:hover img {
-      transform: scale(1.1);  /* Agranda la imagen cuando se hace hover */
+  /* Efecto hover para PC */
+  @media (min-width: 769px) {
+    .receta:hover img {
+        transform: scale(1.1);
+        filter: brightness(0.6);
+    }
+    .receta:hover .hover-text,
+    .receta:hover .btn-ver-receta {
+        opacity: 1;
+    }
   }
 
   /* Hover-text */
   .hover-text {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: black;
+      top: 40%;
       color: white;
       font-size: 24px;
       font-weight: bold;
       padding: 10px;
-      border-radius: 10px;
       opacity: 0;
-      transition: opacity 0.3s ease;
-  }
-
-  .receta:hover .hover-text {
-      opacity: 1;  /* Muestra el texto cuando la receta tiene hover */
+      transition: opacity 0.4s ease;
+      z-index: 2;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
   }
 
   /* Botón */
   .btn-ver-receta {
+      position: absolute;
+      bottom: 20%;
       background-color: black;
       color: white;
       padding: 10px 20px;
@@ -127,81 +178,38 @@
       text-decoration: none;
       font-weight: bold;
       opacity: 0;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      margin: 0 auto;
-      width: fit-content;
-      position: relative;
-      z-index: 1;
+      transition: all 0.4s ease;
+      z-index: 2;
   }
 
-  .receta:hover .btn-ver-receta {
+  /* Efecto para Móviles (Activo al estar en el centro) */
+  :global(.receta.active-center img) {
+      transform: scale(1.1);
+      filter: brightness(0.6);
+  }
+  :global(.receta.active-center .hover-text),
+  :global(.receta.active-center .btn-ver-receta) {
       opacity: 1;
-      transform: translateY(-10px) scale(1.1);  /* Efecto en el botón */
   }
 
-  /* Ajustes para dispositivos pequeños */
+  /* Ajustes Responsive */
   @media (max-width: 768px) {
       .receta {
-          width: 250px;  /* Reduce el tamaño de cada receta en pantallas pequeñas */
+          width: 250px;
           height: 350px;
       }
-
-      .receta img {
-          width: 100%;
-          height: auto;  /* Ajuste para que las imágenes se mantengan proporcionadas */
-      }
-  }
-
-  /* Ajustes para dispositivos aún más pequeños */
-  @media (max-width: 480px) {
-      .receta {
-          width: 200px;  /* Ajuste para pantallas aún más pequeñas */
-          height: 300px;
-      }
-
-      .receta img {
-          width: 100%;
-          height: auto;
-      }
-
       .hover-text {
-          font-size: 18px;  /* Ajusta el tamaño de la fuente para pantallas pequeñas */
-          padding: 5px;
-      }
-
-      .btn-ver-receta {
-          font-size: 14px;  /* Reduce el tamaño del texto en el botón */
-          padding: 8px 16px;  /* Ajusta el tamaño del botón */
+          font-size: 18px;
       }
   }
 
-  /* Efecto hover automático para imágenes en dispositivos táctiles con 70% de visibilidad */
-  .receta img {
-      transition: transform 0.3s ease;
-  }
-
-  /* Hover automático para dispositivos táctiles, cuando la imagen es visible al 70% */
-  .receta.hover img {
-      transform: scale(1.1); /* Agranda la imagen cuando está al 70% visible */
-  }
-
-  /* Efecto hover en dispositivos con mouse */
-  .receta.mouse-hover:hover img {
-      transform: scale(1.1); /* Efecto hover manual */
-  }
-
-  .receta.show-hover img {
-    transform: scale(1.1);  /* Agranda la imagen cuando se activa el hover */
-}
-
-/* Borrado de marca de agua flourish */
-.flourish-embed {
+  .flourish-embed {
     width: 100%;
-    max-width: 100%; /* Impide que el mapa se salga de la pantalla */
-    overflow-x: hidden; /* Evita el desplazamiento horizontal del mapa */
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   * {
-    box-sizing: border-box; /* Asegura que los márgenes y rellenos no causen desbordes */
+    box-sizing: border-box;
   }
 </style>
