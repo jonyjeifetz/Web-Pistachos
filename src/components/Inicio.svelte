@@ -52,7 +52,7 @@
   });
 </script>
 
-<h1>De La Rioja al mundo: nuestro alcance</h1>
+<h1>De La Rioja al mundo: Nuestro alcance</h1>
 <div id="flourish-container">
   <div class="flourish-embed flourish-map" data-src="visualisation/20858873"></div>
 </div>
